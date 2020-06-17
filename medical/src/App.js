@@ -1,5 +1,6 @@
 import React from 'react';
-import Login from './components/Login'
+import Login from './components/Login';
+import CreateUser from './components/CreateUser';
 
 import './App.css';
 
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
 <h1>Hello World!</h1>
 <Login />
+<CreateUser />
     </div>
   );
 }
