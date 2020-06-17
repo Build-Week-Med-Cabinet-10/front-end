@@ -33,6 +33,11 @@ display: flex;
 justify-content: space-between;
 right: 2rem;
 top: -.5rem;
+
+        &&:hover {
+          right: calc(2rem - 3px);
+        }
+
 `
 
 const LoginPrompt = styled.div
@@ -59,9 +64,8 @@ min-width: 12rem;
 height: 3rem;
 display: flex;
 justify-content: center;
-right: 2rem;
-top: -.5rem;
 padding-top: 2rem;
+margin-right: calc(-4rem + 6px) ;
 color: white;
 box-shadow: 6px 6px 0px #555555;
 

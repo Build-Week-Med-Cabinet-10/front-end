@@ -30,16 +30,17 @@ function Header() {
     width: 100%;
     max-width: 1200px;
     margin: 0 2rem;
-    
     `
 
 
     const PromoBarInner = styled.div 
     `
+    position: relative;
     display: flex;
     flex-direction:
     align-items: center;
     justify-content: space-between;
+    background-color: #0b9444;
     width: 100%;
     margin: 2rem auto;
     color: white;
@@ -52,7 +53,6 @@ function Header() {
 
     <HeaderDiv>
         <PromoBar >
-
 
              <PromoBarOuter>
 
@@ -68,8 +68,7 @@ function Header() {
 
         </PromoBar >
 
-        <MainBar>
-        </MainBar>
+        <MainBar />
 
 
 
