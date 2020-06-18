@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import fonts from '../../components/fonts.css'
+import fonts from '../../fonts.css'
 
 import Locator from './locator'
 import LoginPromo from './loginPromo'

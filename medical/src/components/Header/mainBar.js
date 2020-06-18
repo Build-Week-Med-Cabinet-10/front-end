@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import location from '../../components/location.svg';
-import logoImg from '../../components/weed.svg'
+import logoImg from '.././assets/weed.svg';
 import NavBar from '../../components/Header/navBar'
 import {Link, Route} from 'react-router-dom'
 
