@@ -3,6 +3,7 @@ import './App.css';
 import styled from 'styled-components';
 import Header from './components/Header/header'
 import CTA from './components/CTA'
+import StrainCards from './components/strainCards'
 import Footer from './components/Footer/Footer'
 import {Route, Link} from 'react-router-dom'
 
@@ -23,6 +24,8 @@ function App() {
       <Route exact path="/">
 
         <CTA />
+
+        <StrainCards />
 
       </Route>
      
