@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 
 
@@ -8,7 +9,7 @@ const LoginDiv = styled.div
 display: flex;
 flex-direction: row;
 min-width: 16rem;
-
+font-family: 'Roboto', sans-serif;
 max-width: 20%;
 
         img {
@@ -65,9 +66,10 @@ height: 3rem;
 display: flex;
 justify-content: center;
 padding-top: 2rem;
-margin-right: calc(-4rem + 6px) ;
+margin-right: calc(-6rem + 6px);
 color: white;
 box-shadow: 6px 6px 0px #555555;
+font-family: roboto;
 
         &&:hover {
           background-color: #0bb565;
@@ -85,6 +87,15 @@ box-shadow: 6px 6px 0px #555555;
 
 function LoginPromo() {
 
+  const LoginSpan = styled.span 
+  `
+    color: white;
+    font-weight: 400;
+    font-size: .9rem;
+    
+
+    `
+
   return (
 
     
@@ -94,15 +105,22 @@ function LoginPromo() {
    <LoginDiv>
 
      <LoginPrompt>
-        <span>login</span>
+       
+       <Link to="/login">
+         <LoginSpan>Login</LoginSpan>
+          
+        </Link>
+
      </LoginPrompt>
 
 
         <LoginContain>
 
-            <SignUpBanner>
-              <span>Sign UP</span>
-            </SignUpBanner>
+            <Link to="/register">
+              <SignUpBanner>
+                <span>Sign UP</span>
+              </SignUpBanner>
+            </Link>
 
         </LoginContain>
 

@@ -1,25 +1,125 @@
-import React, { Component, useState} from 'react'
+import React from 'react';
+import {useForm} from 'react-hook-form';
+import styled from 'styled-components';
 
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+function CreateUser() {
 
-class CreateUser extends Component {
-//add functions
-    render (){
-        return (
-            <Form>
-            Register form
-             <FormGroup>
-                 <Label>New User Name</Label>  
-                 <input type="text"/>
-                 <Label>E-mail</Label>
-                 <input type = "text"/>
-                 <Label>Password</Label>
-                 <input type= "password" />
-                 <Button>Submit</Button>
-                 <Button>Cancel</Button>
-             </FormGroup>
-            </Form>
-        )
+  const {register, handleSubmit, errors} = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+
+  const InputForm = styled.form
+  `
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+
+    input {
+        height: 1.5rem;
+        margin-bottom: 1rem;
     }
+  
+  `
+
+  const StyledLabel = styled.label
+  `
+  font-weight: 600;
+  margin-bottom: .5rem;
+  text-align: center;
+  
+  `
+
+  const ButtonContainer = styled.div
+  `
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: space-between;
+
+    button {
+        width: 48%;
+        height: 2rem;
+        background-color: grey;
+        border-radius: .25rem;
+        border: 0px;
+        color: white;
+        font-size: .9rem;
+        font-weight: 700;
+
+            &:hover {
+                background-color: #5d5d5d !important;
+            }
+
+    }  
+  `
+
+  const Welcome = styled.h2
+  `
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  
+  
+  `
+
+  return (
+
+    <div>
+      
+
+      <InputForm onSubmit={handleSubmit(onSubmit)}>
+
+          <Welcome>Register</Welcome>
+
+
+        <StyledLabel htmlFor="username">Username</StyledLabel> 
+        <input 
+        type="text" 
+        placeholder="Username"
+        name="username"
+        ref={register} />
+
+
+        <StyledLabel htmlFor="email">Email</StyledLabel> 
+        <input 
+        type="email" 
+        placeholder="you@email.com"
+        name="email"
+        ref={register} />
+       
+
+        <StyledLabel htmlFor="password">Password</StyledLabel>
+        <input 
+        type="text" 
+        placeholder="password"
+        name="password" 
+        ref={register({required: "PASSWORD REQUIRED", minLength: {value: 8, message: "Password is too short"}})}/>
+       
+
+        {errors.password && <p>{errors.password.message}</p>}
+        
+     
+        <ButtonContainer>
+     
+            <button type="submit">Submit</button>
+
+            <button type="reset">Cancel</button>
+
+        </ButtonContainer>
+ 
+
+
+
+      </InputForm>
+     
+      
+
+
+    </div>
+  );
 }
+
 export default CreateUser;

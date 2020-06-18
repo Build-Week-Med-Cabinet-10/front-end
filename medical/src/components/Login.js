@@ -1,78 +1,118 @@
-import React, { Component, useState} from 'react'
-
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-
+import React from 'react';
+import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
 
- const ButtonDiv = styled.div`
-  flex-direction: row,
+function Login() {
+
+  const {register, handleSubmit, errors} = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+
+  const InputForm = styled.form
+  `
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
   
-`;
 
-
-
-
-class Login  extends Component {
-    //add function
-    render () {
-        return (
-           <div>
-           <Form className= "Login"
-           style = {{
-               display: "flex",
-              flexDirection: 'column',
-            
-           }}
-           >
-                <h1 className="font-weight-bold">MedKit</h1>
-                <h2>Welcome</h2>
-               
-                <FormGroup>
-                 <div
-                 style = {{
-                     display:"flex",
-                     flexDirection: "column",
-                     alignContent: "center",
-                     justfyContent: "center"
-                 }} 
-                 >
-                    <Label>User Name</Label>
-                    <input
-                    type= "text"
-                     name= "username"  
-                     style = {{
-                         width: "200px",
-                         alignSelf: "center"
-                     }}       
-                    />
-                    <Label>Password</Label>
-                    <input
-                    type = "password"
-                     name = "password" 
-                                style={{
-                                    width: "200px",
-                                    alignSelf: "center"
-                                }}
-                    /> 
-                     </div>
-                </FormGroup>
-               
-                <ButtonDiv>
-                <Button
-                style= {{
-                    marginRight: "5px"
-                }}
-                >Login</Button>
-                <Button
-                            style={{
-                                marginLeft: "5px"
-                            }}
-                >Cancel</Button>
-                </ButtonDiv>
-            </Form>
-            </div>
-        )
+    input {
+        height: 1.5rem;
+        margin-bottom: 1rem;
     }
+  
+  `
+
+  const StyledLabel = styled.label
+  `
+  font-weight: 600;
+  margin-bottom: .5rem;
+  text-align: center;
+  
+  `
+
+  const ButtonContainer = styled.div
+  `
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: space-between;
+
+    button {
+        width: 48%;
+        height: 2rem;
+        background-color: grey;
+        border-radius: .25rem;
+        border: 0px;
+        color: white;
+        font-size: .9rem;
+        font-weight: 700;
+
+            &:hover {
+                background-color: #5d5d5d !important;
+            }
+
+    }  
+  `
+
+  const Welcome = styled.h2
+  `
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  
+  
+  `
+
+  return (
+
+    <div>
+      
+
+      <InputForm onSubmit={handleSubmit(onSubmit)}>
+
+          <Welcome>Welcome</Welcome>
+
+
+        <StyledLabel htmlFor="username">Username</StyledLabel> 
+        <input 
+        type="text" 
+        placeholder="Username"
+        name="username"
+        ref={register} />
+       
+
+        <StyledLabel htmlFor="password">Password</StyledLabel>
+        <input 
+        type="text" 
+        placeholder="password"
+        name="password" 
+        ref={register({required: "PASSWORD REQUIRED", minLength: {value: 8, message: "Password is too short"}})}/>
+       
+
+        {errors.password && <p>{errors.password.message}</p>}
+        
+     
+        <ButtonContainer>
+     
+            <button type="submit">Submit</button>
+
+            <button type="reset">Cancel</button>
+
+        </ButtonContainer>
+ 
+
+
+
+      </InputForm>
+     
+      
+
+
+    </div>
+  );
 }
 
-export default  Login;
+export default Login;

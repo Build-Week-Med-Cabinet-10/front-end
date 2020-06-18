@@ -3,8 +3,11 @@ import './App.css';
 import styled from 'styled-components';
 import Header from './components/Header/header'
 import CTA from './components/CTA'
+import StrainCards from './components/Strains/strainCards'
 import Footer from './components/Footer/Footer'
 import {Route, Link} from 'react-router-dom'
+import CreateUser from './components/CreateUser'
+import LoginForm from './components/Login'
 
 
 function App() {
@@ -24,7 +27,22 @@ function App() {
 
         <CTA />
 
+        <StrainCards />
+
       </Route>
+
+
+      <Route path="/register">
+
+        <CreateUser />
+
+      </Route>
+
+        <Route path="/login">
+
+          <LoginForm />
+
+        </Route>
      
 
     <Footer />
