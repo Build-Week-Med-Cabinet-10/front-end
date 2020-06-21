@@ -1,16 +1,12 @@
-import React from 'react';
-import {useForm} from 'react-hook-form';
+import React, {useEffect} from 'react';
+import { axiosWithAuth } from "../utilities/axiosWithAuth";
+import { useHistory } from "react-router-dom"
+
+// import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
 
-function Login() {
 
-  const {register, handleSubmit, errors} = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data)
-  }
-
-  const InputForm = styled.form
+ const InputForm = styled.form
   `
   display: flex;
   flex-direction: column;
@@ -25,7 +21,7 @@ function Login() {
   
   `
 
-  const StyledLabel = styled.label
+ const  StyledLabel = styled.label
   `
   font-weight: 600;
   margin-bottom: .5rem;
@@ -33,7 +29,7 @@ function Login() {
   
   `
 
-  const ButtonContainer = styled.div
+  const  ButtonContainer = styled.div
   `
   display: flex;
   flex-direction: row;
@@ -57,7 +53,7 @@ function Login() {
     }  
   `
 
-  const Welcome = styled.h2
+   const Welcome = styled.h2
   `
   font-size: 2rem;
   font-weight: 700;
@@ -65,23 +61,83 @@ function Login() {
   
   
   `
+  
+class   Login extends React.Component {
+//user creds
+state ={
+  credentials: {
+    email: "",
+    password: ""
+  },
+  newState: {
+    loggedUserName: ""
+  },
 
+};
+
+
+
+// newState ={
+//   user:{
+//     userName: "Not Logged In"
+//   }
+// };
+
+
+// const { post } = useHistory();
+
+//temp comment out
+  // const {register,/* handleChange,*/  errors} = useForm();
+   
+  handleChange = e => {
+      this.setState({
+        credentials: {
+          ...this.state.credentials,
+          [e.target.name]: e.target.value
+        }
+      });
+    };
+
+   handleSubmit = e => {
+    e.preventDefault();
+    axiosWithAuth()
+    .post("/api/auth/login",this.state.credentials)
+    .then( res => {
+      console.log("the username is",  res.data.username);
+    
+      console.log("the token is",  res.data.token)
+    })
+  
+    .catch ( (err) =>
+      console.error("bk: Login.js: login: err.message: ", err.message.json)
+      );
+  }
+ //temp comment out
+  //  onSubmit = (data) => {
+  //   console.log("the data", data)
+  // }
+
+
+render(){
   return (
 
     <div>
-      
+    
 
-      <InputForm onSubmit={handleSubmit(onSubmit)}>
+      <InputForm onSubmit={this.handleSubmit}>
 
           <Welcome>Welcome</Welcome>
 
 
-        <StyledLabel htmlFor="username">Username</StyledLabel> 
+        <StyledLabel htmlFor="email">E-Mail</StyledLabel> 
         <input 
         type="text" 
-        placeholder="Username"
-        name="username"
-        ref={register} />
+        placeholder="E-mail"
+        name="email"
+        value={this.state.credentials.email}
+        onChange={this.handleChange}
+        // ref={register} 
+        />
        
 
         <StyledLabel htmlFor="password">Password</StyledLabel>
@@ -89,15 +145,18 @@ function Login() {
         type="text" 
         placeholder="password"
         name="password" 
-        ref={register({required: "PASSWORD REQUIRED", minLength: {value: 8, message: "Password is too short"}})}/>
+        value={this.state.credentials.password}
+        onChange = {this.handleChange}
+        // ref={register({required: "PASSWORD REQUIRED", minLength: {value: 8, message: "Password is too short"}})}
+        />
        
 
-        {errors.password && <p>{errors.password.message}</p>}
+        {/* {errors.password && <p>{errors.password.message}</p>} */}
         
      
         <ButtonContainer>
      
-            <button type="submit">Submit</button>
+            <button type="submit" onSubmit= {console.log("the data",this.data)}>Submit</button>
 
             <button type="reset">Cancel</button>
 
@@ -113,6 +172,7 @@ function Login() {
 
     </div>
   );
+}
 }
 
 export default Login;
