@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "react": "^16.13.1"
+  },
+  "name": "medicine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Build-Week-Med-Cabinet-10/front-end.git",
+  "author": "Jay Brennan <jay@jaybrennan.io>",
+  "license": "MIT"
+}
