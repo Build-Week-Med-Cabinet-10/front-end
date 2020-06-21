@@ -80,7 +80,7 @@ class CreateUser extends React.Component {
         // this.props.history.push("/protected");
       })
       .catch((err) =>
-        console.error("bk: CreateUser.js: login: err.message: ", err.mesage)
+        console.error("bk: CreateUser.js: login: err.message: ", err.mesage.json)
       );
   };
   render() {
