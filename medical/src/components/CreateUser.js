@@ -1,7 +1,13 @@
 import React from 'react';
-// import {useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
-import { axiosWithAuth } from "../utilities/axiosWithAuth";
+// import { axiosWithAuth } from "../utilities/axiosWithAuth";
+import { connect } from "react-redux";
+// import * as Yup from "yup";
+import { NavLink } from "react-router-dom";
+import * as actionFunctions from "../actions/actionFunctions";
+
+
 
 const InputForm = styled.form`
   display: flex;
@@ -53,6 +59,8 @@ const Welcome = styled.h2`
     console.log(data)
   }
 class CreateUser extends React.Component {
+
+
   state = {
     newUser: {
       username: "",
@@ -70,18 +78,19 @@ class CreateUser extends React.Component {
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth()
-      .post("/api/auth/register", this.state.newUser)
-      .then((res) => {
-        console.log(res);
+
+    // axiosWithAuth()
+      // .post("/api/auth/register", this.state.newUser)
+      // .then((res) => {
+      //   console.log(res);
         // localStorage.setItem("token", res.data.payload);
         // this.props.history.push("/protected");
-      })
-      .catch((err) =>
-        console.error("bk: CreateUser.js: login: err.message: ", err.mesage.json)
-      );
+      // })
+      // .catch((err) =>
+      //   console.error("bk: CreateUser.js: login: err.message: ", err.mesage.json)
+      // );
   };
   render() {
     return (
@@ -133,6 +142,14 @@ class CreateUser extends React.Component {
       </div>
     );
   }
-}
 
-export default CreateUser;
+}
+  function  mapPropsToValues ({newUser, email, password}) {
+    return {
+     usernme: username || "",
+     email: email || "",
+     password: password || ""
+    };
+  }
+
+export default connect (mapStateToProps)(CreateUser);

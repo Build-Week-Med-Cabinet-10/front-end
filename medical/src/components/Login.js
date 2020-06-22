@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { axiosWithAuth } from "../utilities/axiosWithAuth";
-import { useHistory } from "react-router-dom"
-
+// import { useHistory } from "react-router-dom"
+// import { connect } from "react-redux";
 // import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
 
