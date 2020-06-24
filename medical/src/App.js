@@ -1,16 +1,14 @@
 import React from 'react';
+import {Route} from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components';
 import Header from './components/Header/header'
 import CTA from './components/CTA'
 import Footer from './components/Footer/Footer'
-import {Route} from 'react-router-dom'
-import CreateUser from './components/CreateUser'
+import CreateUser from './components/signup/CreateUser'
 import LoginForm from './components/Login'
-import DashBoard from './components/dashboard'
-import Recommendations from './components/Recommendations/Recommendations'
-
-
+import DashBoard from './components/Dashboard/Dashboard'
+import Recommendations from './components/Recommendations/RecommendationsList'
 function App() {
 
   const App = styled.div

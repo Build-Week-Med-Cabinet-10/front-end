@@ -22,7 +22,7 @@ function Header() {
     justify-content: space-between;
     background-color: #0b9444;
     height: 2rem;
-    font-weight:
+    // font-weight;
     `
 
     const PromoBarOuter = styled.div
@@ -37,7 +37,7 @@ function Header() {
     `
     position: relative;
     display: flex;
-    flex-direction:
+    // flex-direction:
     align-items: center;
     justify-content: space-between;
     background-color: #0b9444;

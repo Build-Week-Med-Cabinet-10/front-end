@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, ...restOfProps }) => {
-    console.log(restOfProps.isLoggedIn);
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    console.log(rest.isLoggedIn);
 
     return (
         <Route
-            {...restOfProps}
+            {...rest}
             render={props => {
                 if (localStorage.getItem("token")) {
                     return <Component {...props} />
