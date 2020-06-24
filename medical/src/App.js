@@ -6,7 +6,7 @@ import Header from './components/Header/header'
 import CTA from './components/CTA'
 import Footer from './components/Footer/Footer'
 import CreateUser from './components/signup/CreateUser'
-import Login from './components/Login'
+import Login from './components/login/Login'
 import Dashboard from './components/Dashboard/Dashboard'
 import Recommendations from './components/Recommendations/RecommendationsList'
 function App() {
