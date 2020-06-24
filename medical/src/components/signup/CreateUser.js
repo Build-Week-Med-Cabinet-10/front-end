@@ -136,7 +136,7 @@ const handleChange = (e) => {
             <input
             type="text"
             placeholder="Username"
-            // minLenght= "3"
+            // minLength= "3"
             name="name"
             value={formValues.name}
             onChange={handleChange}
