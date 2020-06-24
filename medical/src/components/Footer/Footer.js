@@ -14,7 +14,8 @@ function Footer() {
     justify-content: center;
     background-color: #0a823c;
     min-height: 4rem;
-    position: absolute;
+    margin-top: 2rem;
+    relative;
     width: 100%;
     max-width: 1200px;
     bottom: 0;
@@ -33,7 +34,7 @@ function Footer() {
     <FooterDiv>
 
 
-        <span>© 2020 Lambda Build Week, Inc. All images are . All images are owned by their respective copyright holders and used with permission.</span>
+        <span>© 2020 Lambda Build Week, Inc.  All images are owned by their respective copyright holders and used with permission.</span>
         
 
     </FooterDiv>

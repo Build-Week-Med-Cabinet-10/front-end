@@ -3,17 +3,19 @@ import './App.css';
 import styled from 'styled-components';
 import Header from './components/Header/header'
 import CTA from './components/CTA'
-import StrainCards from './components/Strains/strainCards'
 import Footer from './components/Footer/Footer'
-import {Route, Link} from 'react-router-dom'
 import CreateUser from './components/signup/CreateUser'
 import LoginForm from './components/Login'
-
-
 function App() {
 
   const App = styled.div
-  `max-width: 1200px;
+  `
+   display: flex;
+   flex-direction: column;
+   align-items: space-between;
+   justify-content: space-between;
+   min-height: 100vh;
+   max-width: 1200px;
    margin: 0 auto; 
   `
 
@@ -27,8 +29,6 @@ function App() {
 
         <CTA />
 
-        <StrainCards />
-
       </Route>
 
 
@@ -41,6 +41,20 @@ function App() {
         <Route path="/login">
 
           <LoginForm />
+
+        </Route>
+
+        <Route path="/dashboard">
+
+          <DashBoard />
+
+        </Route>
+
+        <Route path="/strains">
+
+
+            <Recommendations />
+
 
         </Route>
      
