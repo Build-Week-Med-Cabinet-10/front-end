@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { axiosWithAuth } from "../utilities/axiosWithAuth";
-import { useHistory } from "react-router-dom"
-
-import {useForm} from 'react-hook-form';
+// import { useHistory } from "react-router-dom"
+// import { connect } from "react-redux";
+// import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
 
 
@@ -61,20 +61,35 @@ import styled from 'styled-components';
   
   
   `
+  
 class   Login extends React.Component {
 //user creds
 state ={
   credentials: {
     email: "",
     password: ""
-  }
+  },
+  newState: {
+    loggedUserName: ""
+  },
+
 };
+
+
+
+// newState ={
+//   user:{
+//     userName: "Not Logged In"
+//   }
+// };
+
 
 // const { post } = useHistory();
 
 //temp comment out
   // const {register,/* handleChange,*/  errors} = useForm();
-     handleChange = e => {
+   
+  handleChange = e => {
       this.setState({
         credentials: {
           ...this.state.credentials,
@@ -88,25 +103,26 @@ state ={
     axiosWithAuth()
     .post("/api/auth/login",this.state.credentials)
     .then( res => {
-      console.log(res);
-      localStorage.setItem("token", res.data.payload);
-    this.props.history.push("/protected")
+      console.log("the username is",  res.data.username);
+    
+      console.log("the token is",  res.data.token)
     })
-    .catch (err =>
-      console.error("bk: Login.js: login: err.message: ", err.mesage)
+  
+    .catch ( (err) =>
+      console.error("bk: Login.js: login: err.message: ", err.message.json)
       );
   }
  //temp comment out
-   onSubmit = (data) => {
-    console.log(data)
-  }
+  //  onSubmit = (data) => {
+  //   console.log("the data", data)
+  // }
 
 
 render(){
   return (
 
     <div>
-      
+    
 
       <InputForm onSubmit={this.handleSubmit}>
 
@@ -140,7 +156,7 @@ render(){
      
         <ButtonContainer>
      
-            <button type="submit">Submit</button>
+            <button type="submit" onSubmit= {console.log("the data",this.data)}>Submit</button>
 
             <button type="reset">Cancel</button>
 
