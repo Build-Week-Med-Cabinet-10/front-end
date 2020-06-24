@@ -3,5 +3,5 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 
  
-const registerApi = "https://med-cabinet-backend.herokuapp.com/api/auth/register";
-const loginApi = "https://med-cabinet-backend.herokuapp.com/api/auth/login";
+// const registerApi = "https://med-cabinet-backend.herokuapp.com/api/auth/register";
+// const loginApi = "https://med-cabinet-backend.herokuapp.com/api/auth/login";

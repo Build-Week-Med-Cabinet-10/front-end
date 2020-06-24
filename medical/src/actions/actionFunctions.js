@@ -1,10 +1,11 @@
+import axios from "axios";
 import * as types from "./actionTypes";
 import { axiosWithAuth } from "../utilities/axiosWithAuth";
 
 
 
 const registerApi = "https://med-cabinet-backend.herokuapp.com/api/auth/register";
-const loginApi = "https://med-cabinet-backend.herokuapp.com/api/auth/login";
+// const loginApi = "https://med-cabinet-backend.herokuapp.com/api/auth/login";
 
 // signup
 

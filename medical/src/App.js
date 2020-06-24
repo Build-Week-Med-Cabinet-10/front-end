@@ -6,7 +6,7 @@ import CTA from './components/CTA'
 import StrainCards from './components/Strains/strainCards'
 import Footer from './components/Footer/Footer'
 import {Route, Link} from 'react-router-dom'
-import CreateUser from './components/CreateUser'
+import CreateUser from './components/signup/CreateUser'
 import LoginForm from './components/Login'
 
 
