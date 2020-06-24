@@ -5,7 +5,10 @@ import Header from './components/Header/header'
 import CTA from './components/CTA'
 import Footer from './components/Footer/Footer'
 import CreateUser from './components/signup/CreateUser'
-import LoginForm from './components/Login'
+import LoginForm from './components/Login';
+import Recommendations from "./components/Recommendations/Recommendations";
+import Dashboard from "./components/Dashboard/Dashboard"
+import {Route} from "react-router-dom";
 function App() {
 
   const App = styled.div
@@ -46,7 +49,7 @@ function App() {
 
         <Route path="/dashboard">
 
-          <DashBoard />
+          <Dashboard />
 
         </Route>
 
