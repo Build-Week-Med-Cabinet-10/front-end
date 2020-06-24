@@ -5,7 +5,7 @@ export const FETCH_USER_FAILURE = "FETCH_USER_FAILURE";
 export const fetchUser = (id) => (dispatch) => {
   dispatch({ type: FETCH_USER_START });
   axiosWithAuth()
-    .get(`/api/auth/cannabis/${id}`)
+    .get(`/api/auth/cannabis`)
     .then((res) => {
       console.log(res);
       dispatch({ type: FETCH_USER_SUCCESS, payload: res.data });

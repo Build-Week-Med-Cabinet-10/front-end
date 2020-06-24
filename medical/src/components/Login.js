@@ -103,6 +103,7 @@ state ={
     axiosWithAuth()
     .post("/api/auth/login",this.state.credentials)
     .then( res => {
+      console.log("the data is", res.data)
       console.log("the username is",  res.data.username);
     
       console.log("the token is",  res.data.token)
