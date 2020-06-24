@@ -3,6 +3,7 @@ import { axiosWithAuth } from "../utilities/axiosWithAuth";
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
+import UserImage from '../components/assets/user-placeholder.jpg'
 
 
 
@@ -13,8 +14,17 @@ import { Button } from 'reactstrap';
         `
         display:flex;
         flex-direction: row;
-        width: 100%;    
+        width: 100%;     
         `
+
+        const DashImg = styled.img
+        `
+        display: inline-block;
+        max-width: 100%;
+        `
+
+
+
 
             const DashCard = styled.div
             `
@@ -22,7 +32,7 @@ import { Button } from 'reactstrap';
             flex-direction: column;
             width: 100%; 
             max-width: 1200px; 
-            margin: 2rem auto;     
+            margin: 0rem auto;     
             `
 
                 const DashCardRow = styled.div
@@ -35,22 +45,50 @@ import { Button } from 'reactstrap';
 
                 `
 
+            const UserCard = styled.div
+            `
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+            min-width: 200px;
+
+                span {
+                    color: #ffffff;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    padding: .5rem;
+                    text-align: center;
+                    background: #0b9444;
+                }
+            
+            
+            `
+
 
 
 
         return (
             
-            <DashCard>
 
-                <DashCardRow>
+            <DashContain>
+                
+                <DashCard>
 
-                    <button>hello</button>
-                    <button>hello</button>
-                </DashCardRow>
+                    <DashCardRow>
+
+                        <UserCard>
+                            <DashImg src={UserImage} />
+
+                            <span>userName goes here</span>
+
+                        </UserCard>
+
+                    </DashCardRow>
 
 
-            </DashCard>
+                </DashCard>
 
+            </DashContain>
 
         )
 
