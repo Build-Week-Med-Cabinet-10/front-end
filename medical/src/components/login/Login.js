@@ -95,12 +95,12 @@ const { push } = useHistory();
          [name]: "",
        });
      })
-     .catch((error) => {
-       setFormErrors({
-         ...formErrors,
-         [name]: error.error[0],
-       });
-     })
+    //  .catch((error) => {
+    //    setFormErrors({
+    //      ...formErrors,
+    //      [name]: error.error[0],
+    //    });
+    //  })
      setFormValues({
        ...formValues,
        [name]: value
