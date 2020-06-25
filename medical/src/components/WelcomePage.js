@@ -17,6 +17,11 @@ export default function WelcomePage () {
                     <CreateUser />
                     </Route>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                   <PrivateRoute
+          exact
+          path="/dashboard/strains"
+          component={Strains}
+        />
             </Switch>
         </div>
     );
