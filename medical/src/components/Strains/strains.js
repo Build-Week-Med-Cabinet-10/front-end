@@ -1,60 +1,69 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from 'axios';
+import {axiosWithAuth, setToken} from "../../utilities/";
 import StrainCard from "./StrainCard";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { getToken } from "../../utilities"
 const StrainsContainer = styled.section`
   display: flex;
   flex-direction: column;
-  padding-left: 8vw;
-  padding-top: 16vh;
-  font-size: 1rem;
-  font-family: "Script MT";
-  min-height: 100%;
-  min-width: 80%;
-  max-width: 80%;
+  margin-top: 2rem;
+  align-items: center;
+
+
   p {
     text-align: left;
     font-weight: bold;
-    padding: 0 1%;
+    
   }
 `;
 const StrainListControl = styled.div`
   display: flex;
   justify-content: space-around;
-  font-family: "Script MT";
+  font-family: "Roboto";
+  max-width: 80%;
 `;
+
 const StrainCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  font-family: "Script MT";
+  font-family: "Roboto";
+  width: 100%;
 `;
-const SButton = styled.button`
-  background: forestgreen;
-  min-height: 15vh;
-  min-width: 15vw;
-  border: 1px solid forestgreen;
-  border-radius: 30px 10px 30px;
-  color: white;
-  margin: 0.5em 1em;
-  padding: 0.25em 1em;
-  cursor: pointer;
-  font-family: "Script MT";
-  ${props =>
-    props.primary &&
-    css`
-      background: Purple;
-      border: 1px solid Purple;
-    `}
 
-  ${props =>
-    props.tertiary &&
-    css`
-      background: red;
-      border: 1px solid red;
-    `}
+const StrainButton = styled.button
+`
+background-color: #0DCA71;
+min-width: 12rem;
+height: 4rem;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 2rem;
+
+color: white;
+box-shadow: 6px 6px 0px #555555;
+font-family: roboto;
+
+        &&:hover {
+          background-color: #0bb565;
+          right: calc(2rem - 3px);
+          margin-top: 5px;
+          margin-bottom: -5px;
+          box-shadow: 3px 3px 0px #555555;
+          margin-top: calc(2rem + 6px);
+        
+        }
+
+
+        span {
+          font-size: 1.2rem;
+        }
 `;
+
+
 
 export default function StrainList(props) {
   const [strains, setStrains] = useState([]);
@@ -67,25 +76,32 @@ export default function StrainList(props) {
     );
     setFilteredStrains(filteredList);
   };
-  const getStrains = () => {
-    axios({
-      "method":"POST",
-      "url":"https://strainraygorodskijv1.p.rapidapi.com/getAllStrains",
-      "headers":{
-      "content-type":"application/x-www-form-urlencoded",
-      "x-rapidapi-host":"StrainraygorodskijV1.p.rapidapi.com",
-      "x-rapidapi-key":"273bc202dbmsh49d80387c5f7502p14618ajsne8e81cda88a7",
-      "useQueryString":true
-      },"data":{
-      
-      }
+
+  // const api = 'https://med-cabinet-backend.herokuapp.com'; 
+  // const token = getToken(); /*take only token and save in token variable*/
+  // axios.get(`https://med-cabinet-backend.herokuapp.com=&:${token}`)
+  // .then(res => {
+  // console.log(res);
+  // // .catch((error) => {
+  // //   console.log(error)
+  // });
+
+
+  const getStrains = (props) => {
+  
+    axiosWithAuth()
+    axios
+    .get("https://med-cabinet-backend.herokuapp.com/api/auth/cannabis")
+
+      .then(response => {
+        setStrains(response.data);
+        setFilteredStrains(strains);
+        console.log(response.data)
       })
-      .then((response)=>{
-        console.log(response)
-      })
-      .catch((error)=>{
-        console.log(error)
-      })
+
+      .catch(error => {
+        console.error("Server Error", error);
+      });
   };
   useEffect(() => {
     getStrains();
@@ -98,23 +114,23 @@ export default function StrainList(props) {
     return (
       <StrainsContainer>
         <StrainListControl>
-          <SButton name="indica" onClick={() => setType("Indica")}>
+          <StrainButton name="indica" onClick={() => setType("Indica")}>
             Indica
-          </SButton>
-          <SButton primary name="hybrid" onClick={() => setType("Hybrid")}>
+          </StrainButton>
+          <StrainButton name="hybrid" onClick={() => setType("Hybrid")}>
             Hybrid
-          </SButton>
-          <SButton tertiary name="sativa" onClick={() => setType("Sativa")}>
+          </StrainButton>
+          <StrainButton name="sativa" onClick={() => setType("Sativa")}>
             Sativa
-          </SButton>
+          </StrainButton>
         </StrainListControl>
-        <h3>All {type} strains listed below:</h3>
+        <h3> Recommended {type} strains listed below:</h3>
         <StrainCardContainer>
           {filteredStrains.map(strain => {
             return (
               <StrainCard
                 key={strain.id}
-                sName={strain.name}
+                strainName={strain.name}
                 race={strain.race}
                 id={strain.id}
               />
@@ -124,26 +140,27 @@ export default function StrainList(props) {
       </StrainsContainer>
     );
   }
+  
   return (
     <StrainsContainer>
       <StrainListControl>
-        <SButton name="indica" onClick={() => setType("Indica")}>
+        <StrainButton name="indica" onClick={() => setType("Indica")}>
           Indica
-        </SButton>
-        <SButton primary name="hybrid" onClick={() => setType("Hybrid")}>
+        </StrainButton>
+        <StrainButton primary name="hybrid" onClick={() => setType("Hybrid")}>
           Hybrid
-        </SButton>
-        <SButton tertiary name="sativa" onClick={() => setType("Sativa")}>
+        </StrainButton>
+        <StrainButton tertiary name="sativa" onClick={() => setType("Sativa")}>
           Sativa
-        </SButton>
+        </StrainButton>
       </StrainListControl>
-      <h3> All {type} strains listed below:</h3>
+      <h3> Recommended {type} strains listed below:</h3>
       <StrainCardContainer>
-        {strains.slice(0, 100).map(strain => {
+        {strains.slice(0, 8).map(strain => {
           return (
             <StrainCard
               key={strain.id}
-              sName={strain.name}
+              strainName={strain.name}
               race={strain.race}
               id={strain.id}
             />

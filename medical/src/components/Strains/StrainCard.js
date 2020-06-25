@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import marijuana from "../assets/medical.jpg";
 const StrainCardTemp = styled.div`
 
@@ -35,7 +35,7 @@ const StrainCard = props => {
   return (
     <StrainCardTemp>
       <TypeMar>
-        Type: {props.type} 
+        Type: {props.race} 
       </TypeMar>
       
       <img src={marijuana} alt="flower_photo" width="100%" height="100%" />
