@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StrainCard from "../Strains/StrainCard";
-<<<<<<< HEAD
-import styled from "styled-components";
-=======
 import styled, {css} from "styled-components";
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
 
 const StrainContainer = styled.div`
   display: flex;
@@ -24,11 +20,8 @@ const StrainContainer = styled.div`
     h3 {
         text-align: center;
     }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
 `;
 
 const StrainController = styled.div`
@@ -52,10 +45,6 @@ height: 6rem;
 display: flex;
 justify-content: center;
 padding-top: 2rem;
-<<<<<<< HEAD
-margin-top: 2rem;
-=======
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
 
 color: white;
 box-shadow: 6px 6px 0px #555555;
@@ -68,10 +57,6 @@ font-size: 1.5rem;
           margin-top: 5px;
           box-shadow: 3px 3px 0px #555555;
           margin-bottom: -6px;
-<<<<<<< HEAD
-          margin-top: 2rem;
-=======
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
          
         
         }
@@ -84,23 +69,14 @@ font-size: 1.5rem;
 
 export default function RecommendationList() {
   const [strains, setStrains] = useState([]);
-<<<<<<< HEAD
-  const [race, setRace] = useState("Indica");
-=======
   const [type, setType] = useState("Indica");
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
   useEffect(() => {
     const getStrains = () => {
       
         axios
 
         .get(
-<<<<<<< HEAD
-          `https://strainapi.evanbusse.com/kvNFH0z/strains/search/race/${race}`
-          
-=======
           `https://strainapi.evanbusse.com/VUGyzwt/strains/search/race/${type}`
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
         )
 
         .then(response => {
@@ -114,11 +90,7 @@ export default function RecommendationList() {
     };
 
     getStrains();
-<<<<<<< HEAD
-  }, [race]);
-=======
   }, [type]);
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
 
   return (
 
@@ -126,17 +98,6 @@ export default function RecommendationList() {
 
       <StrainController>
 
-<<<<<<< HEAD
-        <StrainButton name="indica" onClick={() => setRace("Indica")}>
-          Indica
-        </StrainButton>
-
-        <StrainButton name="hybrid" onClick={() => setRace("Hybrid")}>
-          Hybrid
-        </StrainButton>
-
-        <StrainButton name="sativa" onClick={() => setRace("Sativa")}>
-=======
         <StrainButton name="indica" onClick={() => setType("Indica")}>
           Indica
         </StrainButton>
@@ -146,23 +107,11 @@ export default function RecommendationList() {
         </StrainButton>
 
         <StrainButton name="sativa" onClick={() => setType("Sativa")}>
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
           Sativa
         </StrainButton>
 
       </StrainController>
 
-<<<<<<< HEAD
-      <h3>We recommended the {race} strains listed below:</h3>
-      <StrainCardContainer>
-        {strains.slice(200, 240).map(i => {
-          return (
-            <StrainCard
-              key={i.id}
-              strainName={i.name}
-              type={i.race}
-              id={i.id}
-=======
       <h3>We recommended the {type} strains listed below:</h3>
       <StrainCardContainer>
         {strains.slice(200, 240).map(strain => {
@@ -172,7 +121,6 @@ export default function RecommendationList() {
               strainName={strain.name}
               type={strain.race}
               id={strain.id}
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7
             />
           );
         })

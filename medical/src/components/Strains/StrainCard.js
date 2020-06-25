@@ -1,50 +1,5 @@
-<<<<<<< HEAD
-import react from 'react';
-import { useState, useEffect } from 'react'
-
-
-
-
-function StrainCards() {
-
-    fetch("https://brianiswu-otreeba-open-cannabis-v1.p.rapidapi.com/strains", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "brianiswu-otreeba-open-cannabis-v1.p.rapidapi.com",
-		"x-rapidapi-key": "1329c33f5dmshd8d569b40720847p153a4fjsn88ef2266672c"
-	}
-        })
-        .then(response => {
-            console.log(response);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-    return (
-
-
-
-        null
-
-
-
-    )
-
-
-
-
-
-
-
-
-
-}
-
-export default StrainCards;
-=======
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import marijuana from "../assets/medical.jpg";
 const StrainCardTemp = styled.div`
 
@@ -89,4 +44,3 @@ const StrainCard = props => {
   );
 };
 export default StrainCard;
->>>>>>> 594cbeafeed4df82d09c86b81bab4463ac64c9c7

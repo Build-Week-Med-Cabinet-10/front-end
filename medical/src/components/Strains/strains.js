@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import {axiosWithAuth} from "axios";
 import StrainCard from "./StrainCard";
 import styled, { css } from "styled-components";
 const StrainsContainer = styled.section`
