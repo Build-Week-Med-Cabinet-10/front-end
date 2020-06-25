@@ -49,7 +49,7 @@ function App() {
 
         <Route path="/dashboard">
 
-          <DashBoard />
+          <DashBoard userName="Tom Sawyer"/>
 
         </Route>
 

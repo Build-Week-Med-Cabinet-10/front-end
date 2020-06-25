@@ -67,7 +67,7 @@ font-size: 1.5rem;
         }
 `;
 
-export default function RecommendationList() {
+export default function FavoritesList() {
   const [strains, setStrains] = useState([]);
   const [race, setRace] = useState("Indica");
   useEffect(() => {
@@ -96,26 +96,9 @@ export default function RecommendationList() {
   return (
 
     <StrainContainer>
-
-      <StrainController>
-
-        <StrainButton name="indica" onClick={() => setRace("Indica")}>
-          Indica
-        </StrainButton>
-
-        <StrainButton name="hybrid" onClick={() => setRace("Hybrid")}>
-          Hybrid
-        </StrainButton>
-
-        <StrainButton name="sativa" onClick={() => setRace("Sativa")}>
-          Sativa
-        </StrainButton>
-
-      </StrainController>
-
-      <h3>We recommended the {race} strains listed below:</h3>
+        
       <StrainCardContainer>
-        {strains.slice(200, 240).map(i => {
+        {strains.slice(200, 204).map(i => {
           return (
             <StrainCard
               key={i.id}
