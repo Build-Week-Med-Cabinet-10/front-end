@@ -13,7 +13,9 @@ export default function WelcomePage () {
             <Switch>
                 <Redirect exact from = "/" to= "Login" />
                 <Route path="/login" render= {props => <Login {...props} />} />
-                <Route path ="/signUp" render= {props => <CreateUser {...props} />} />
+                <Route path ="/register" >
+                    <CreateUser />
+                    </Route>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
         </div>
