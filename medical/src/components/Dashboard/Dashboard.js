@@ -68,6 +68,7 @@ import UserImage from '../components/assets/user-placeholder.jpg'
                     <DashCardRow>
 
                         <UserCard>
+                            
                             <DashImg src={UserImage} />
 
                          <span></span>
