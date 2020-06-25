@@ -5,10 +5,11 @@ import styled from 'styled-components';
 import Header from './components/Header/header'
 import CTA from './components/CTA'
 import Footer from './components/Footer/Footer'
-import CreateUser from './components/signup/CreateUser'
-import LoginForm from './components/Login'
-import DashBoard from './components/Dashboard/Dashboard'
-import Recommendations from './components/Recommendations/RecommendationsList'
+// import CreateUser from './components/signup/CreateUser'
+// import Login from './components/login/Login'
+// import Dashboard from './components/Dashboard/Dashboard'
+import Recommendations from './components/Recommendations/RecommendationsList';
+import WelcomePage from "./components/WelcomePage"
 function App() {
 
   const App = styled.div
@@ -28,7 +29,7 @@ function App() {
 
      <Header />
 
-      <Route exact path="/">
+      {/* <Route exact path="/">
 
         <CTA />
 
@@ -43,7 +44,7 @@ function App() {
 
         <Route path="/login">
 
-          <LoginForm />
+          <Login />
 
         </Route>
 
@@ -59,8 +60,9 @@ function App() {
             <Recommendations />
 
 
-        </Route>
-     
+        </Route> */}
+        
+     <WelcomePage username="Tom Sawyer"/>
 
     <Footer />
 

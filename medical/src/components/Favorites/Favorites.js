@@ -76,7 +76,7 @@ export default function FavoritesList() {
         axios
 
         .get(
-          `https://strainapi.evanbusse.com/kvNFH0z/strains/search/race/${race}`
+          `https://straingitapi.evanbusse.com/kvNFH0z/strains/search/race/${race}`
           
         )
 
@@ -96,7 +96,7 @@ export default function FavoritesList() {
   return (
 
     <StrainContainer>
-        
+
       <StrainCardContainer>
         {strains.slice(200, 204).map(i => {
           return (
