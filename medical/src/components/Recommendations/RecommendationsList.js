@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StrainCard from "../Strains/StrainCard";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 const StrainContainer = styled.div`
   display: flex;
@@ -20,8 +20,6 @@ const StrainContainer = styled.div`
     h3 {
         text-align: center;
     }
-
-
 `;
 
 const StrainController = styled.div`
@@ -45,6 +43,7 @@ height: 6rem;
 display: flex;
 justify-content: center;
 padding-top: 2rem;
+margin-top: 2rem;
 
 color: white;
 box-shadow: 6px 6px 0px #555555;
@@ -57,6 +56,7 @@ font-size: 1.5rem;
           margin-top: 5px;
           box-shadow: 3px 3px 0px #555555;
           margin-bottom: -6px;
+          margin-top: 2rem;
          
         
         }
@@ -69,14 +69,15 @@ font-size: 1.5rem;
 
 export default function RecommendationList() {
   const [strains, setStrains] = useState([]);
-  const [type, setType] = useState("Indica");
+  const [race, setRace] = useState("Indica");
   useEffect(() => {
     const getStrains = () => {
       
         axios
 
         .get(
-          `https://strainapi.evanbusse.com/VUGyzwt/strains/search/race/${type}`
+          `https://strainapi.evanbusse.com/kvNFH0z/strains/search/race/${race}`
+          
         )
 
         .then(response => {
@@ -90,7 +91,7 @@ export default function RecommendationList() {
     };
 
     getStrains();
-  }, [type]);
+  }, [race]);
 
   return (
 
@@ -98,29 +99,29 @@ export default function RecommendationList() {
 
       <StrainController>
 
-        <StrainButton name="indica" onClick={() => setType("Indica")}>
+        <StrainButton name="indica" onClick={() => setRace("Indica")}>
           Indica
         </StrainButton>
 
-        <StrainButton name="hybrid" onClick={() => setType("Hybrid")}>
+        <StrainButton name="hybrid" onClick={() => setRace("Hybrid")}>
           Hybrid
         </StrainButton>
 
-        <StrainButton name="sativa" onClick={() => setType("Sativa")}>
+        <StrainButton name="sativa" onClick={() => setRace("Sativa")}>
           Sativa
         </StrainButton>
 
       </StrainController>
 
-      <h3>We recommended the {type} strains listed below:</h3>
+      <h3>We recommended the {race} strains listed below:</h3>
       <StrainCardContainer>
-        {strains.slice(200, 240).map(strain => {
+        {strains.slice(200, 240).map(i => {
           return (
             <StrainCard
-              key={strain.id}
-              strainName={strain.name}
-              type={strain.race}
-              id={strain.id}
+              key={i.id}
+              strainName={i.name}
+              type={i.race}
+              id={i.id}
             />
           );
         })

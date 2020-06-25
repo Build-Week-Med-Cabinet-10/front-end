@@ -1,34 +1,30 @@
 import React from 'react';
-import { axiosWithAuth } from "../../utilities/axiosWithAuth";
+import { axiosWithAuth } from "../utilities/axiosWithAuth";
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
-import UserImage from '../assets/user-placeholder.jpg';
-import { user } from "../../actions"
+import UserImage from '../components/assets/user-placeholder.jpg'
 
 
 
-function DashBoard() {
+    function DashBoard() {
 
 
-    const DashContain = styled.div
+        const DashContain = styled.div
         `
         display:flex;
         flex-direction: row;
         width: 100%;     
         `
 
-    const DashImg = styled.img
+        const DashImg = styled.img
         `
         display: inline-block;
         max-width: 100%;
         `
 
-
-
-
-    const DashCard = styled.div
-        `
+            const DashCard = styled.div
+            `
             display: flex;
             flex-direction: column;
             width: 100%; 
@@ -36,8 +32,8 @@ function DashBoard() {
             margin: 0rem auto;     
             `
 
-    const DashCardRow = styled.div
-        `
+                const DashCardRow = styled.div
+                `
                 display: flex;
                 flex-direction: row;
                 width: 100%;
@@ -45,12 +41,13 @@ function DashBoard() {
                 justify-content: space-between;
                 `
 
-    const UserCard = styled.div
-        `
+            const UserCard = styled.div
+            `
             display: flex;
             flex-direction: column;
             min-height: 300px;
             min-width: 200px;
+
                 span {
                     color: #ffffff;
                     font-weight: 700;
@@ -58,38 +55,38 @@ function DashBoard() {
                     padding: .5rem;
                     text-align: center;
                     background: #0b9444;
-                }
-            
-            
+                }  
             `
 
+        return (
+            
+
+            <DashContain>
+                
+                <DashCard>
+
+                    <DashCardRow>
+
+                        <UserCard>
+                            <DashImg src={UserImage} />
+
+                         <span></span>
+
+                        </UserCard>
+
+                    </DashCardRow>
 
 
+                </DashCard>
 
-    return (
+            </DashContain>
 
+        )
 
-        <DashContain>
-
-            <DashCard>
-
-                <DashCardRow>
-
-                    <UserCard>
-                        <DashImg src={UserImage} />
-
-    <span>userName goes here{user.username  }</span>
-
-                    </UserCard>
-
-                </DashCardRow>
-
-
-            </DashCard>
-
-        </DashContain>
-
-    )
-
+<<<<<<< HEAD
 }
 export default DashBoard;
+=======
+    }
+    export default DashBoard
+>>>>>>> 380c0b8e6f66a13e69bd29f2748dc9369759e634

@@ -50,7 +50,7 @@ function App() {
 
         <Route path="/dashboard">
 
-          <Dashboard />
+          <DashBoard userName="Tom Sawyer"/>
 
         </Route>
 
@@ -61,7 +61,8 @@ function App() {
 
 
         </Route> */}
-     <WelcomePage />
+        
+     <WelcomePage username="Tom Sawyer"/>
 
     <Footer />
 
