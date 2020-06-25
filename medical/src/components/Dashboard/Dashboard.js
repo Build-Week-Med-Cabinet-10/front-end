@@ -37,6 +37,7 @@ import UserImage from '../../components/assets/user-placeholder.jpg'
                 display: flex;
                 flex-direction: row;
                 width: 100%;
+                height: 100%;
                 align-items: space-between;
                 justify-content: space-between;
                 `
@@ -45,7 +46,6 @@ import UserImage from '../../components/assets/user-placeholder.jpg'
             `
             display: flex;
             flex-direction: column;
-            min-height: 300px;
             min-width: 200px;
 
                 span {
@@ -56,6 +56,30 @@ import UserImage from '../../components/assets/user-placeholder.jpg'
                     text-align: center;
                     background: #0b9444;
                 }  
+            `
+
+            const StrainForms = styled.div
+            `
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #dcdcdc;
+            height: calc(100% - 2rem);
+            width: calc(100% - 4rem);
+            margin: 2rem 4rem;
+            border: 2px solid #555555;
+            padding: 2rem;
+            box-sizing: border-box;
+            `
+
+            const FavoriteStrains = styled.div
+            `
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            padding: 1rem;
             `
 
         return (
@@ -69,10 +93,18 @@ import UserImage from '../../components/assets/user-placeholder.jpg'
 
                         <UserCard>
                             <DashImg src={UserImage} />
-
-                         <span></span>
-
+                            <span>Hello</span>
                         </UserCard>
+
+                        <StrainForms>
+
+                          Place code here
+
+                          <FavoriteStrains>
+
+                          </FavoriteStrains>
+
+                        </StrainForms>
 
                     </DashCardRow>
 
