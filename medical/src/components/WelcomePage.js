@@ -6,6 +6,7 @@ import Strains from "./Strains/strains";
 import Login from "./login/Login";
 import CreateUser from './signup/CreateUser';
 import  Dashboard from "./Dashboard/Dashboard";
+import PreferenceForm from "./PreferenceFroms"
 
 export default function WelcomePage () {
     return (
@@ -22,6 +23,7 @@ export default function WelcomePage () {
           path="/dashboard/strains"
           component={Strains}
         />
+                <PrivateRoute path="/dashboard/preferences" component={PreferenceForm} />
             </Switch>
         </div>
     );
