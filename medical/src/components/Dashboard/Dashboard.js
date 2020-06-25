@@ -3,56 +3,93 @@ import { axiosWithAuth } from "../../utilities/axiosWithAuth";
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
+import UserImage from '../assets/user-placeholder.jpg';
+import { user } from "../../actions"
 
 
 
-    function DashBoard() {
+function DashBoard() {
 
 
-        const DashContain = styled.div
+    const DashContain = styled.div
         `
         display:flex;
         flex-direction: row;
-        width: 100%;    
+        width: 100%;     
         `
 
-            const DashCard = styled.div
-            `
+    const DashImg = styled.img
+        `
+        display: inline-block;
+        max-width: 100%;
+        `
+
+
+
+
+    const DashCard = styled.div
+        `
             display: flex;
             flex-direction: column;
             width: 100%; 
             max-width: 1200px; 
-            margin: 2rem auto;     
+            margin: 0rem auto;     
             `
 
-                const DashCardRow = styled.div
-                `
+    const DashCardRow = styled.div
+        `
                 display: flex;
                 flex-direction: row;
                 width: 100%;
                 align-items: space-between;
                 justify-content: space-between;
-
                 `
 
-
-
-
-        return (
+    const UserCard = styled.div
+        `
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+            min-width: 200px;
+                span {
+                    color: #ffffff;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    padding: .5rem;
+                    text-align: center;
+                    background: #0b9444;
+                }
             
+            
+            `
+
+
+
+
+    return (
+
+
+        <DashContain>
+
             <DashCard>
 
                 <DashCardRow>
 
-                    <button>hello</button>
-                    <button>hello</button>
+                    <UserCard>
+                        <DashImg src={UserImage} />
+
+    <span>userName goes here{user.username  }</span>
+
+                    </UserCard>
+
                 </DashCardRow>
 
 
             </DashCard>
 
+        </DashContain>
 
-        )
+    )
 
-    }
-    export default DashBoard;
+}
+export default DashBoard;
