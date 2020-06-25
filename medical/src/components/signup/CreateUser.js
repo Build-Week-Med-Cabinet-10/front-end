@@ -113,7 +113,7 @@ const handleChange = (e) => {
         push("/login");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.json);
         setFormErrors({
           ...formErrors,
           name: "Signup failed. Please try again.",
