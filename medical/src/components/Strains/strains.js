@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from 'axios';
+import {axiosWithAuth, setToken} from "../../utilities/";
 import StrainCard from "./StrainCard";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { getToken } from "../../utilities"
 const StrainsContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -61,6 +63,8 @@ font-family: roboto;
         }
 `;
 
+
+
 export default function StrainList(props) {
   const [strains, setStrains] = useState([]);
   const [type, setType] = useState("Indica");
@@ -72,12 +76,22 @@ export default function StrainList(props) {
     );
     setFilteredStrains(filteredList);
   };
-  const getStrains = () => {
-    axios
 
-      .get(
-        `https://strainapi.evanbusse.com/VUGyzwt/strains/search/race/${type}`
-      )
+  // const api = 'https://med-cabinet-backend.herokuapp.com'; 
+  // const token = getToken(); /*take only token and save in token variable*/
+  // axios.get(`https://med-cabinet-backend.herokuapp.com=&:${token}`)
+  // .then(res => {
+  // console.log(res);
+  // // .catch((error) => {
+  // //   console.log(error)
+  // });
+
+
+  const getStrains = (props) => {
+  
+    axiosWithAuth()
+    axios
+    .get("https://med-cabinet-backend.herokuapp.com/api/auth/cannabis")
 
       .then(response => {
         setStrains(response.data);
