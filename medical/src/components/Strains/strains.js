@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import axios from 'axios';
 import {axiosWithAuth, setToken} from "../../utilities/";
 import StrainCard from "./StrainCard";
 import styled from "styled-components";
 import { getToken } from "../../utilities"
+=======
+import {axiosWithAuth} from "../../utilities/axiosWithAuth";
+import StrainCard from "./StrainCard";
+import styled, { css } from "styled-components";
+import { user } from "../../actions"
+import { getToken } from "../../utilities"
+
+
+
+>>>>>>> 41a37a5ac9a9ad428eab6dd1f8dab1350d1482ce
 const StrainsContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -62,7 +73,14 @@ font-family: roboto;
           font-size: 1.2rem;
         }
 `;
+class Strains extends React.Component {
+  state = { strains: [] }
 
+  componentDidMount() {
+    this.getStrainsList();
+  }
+
+<<<<<<< HEAD
 
 
 export default function StrainList(props) {
@@ -102,17 +120,26 @@ export default function StrainList(props) {
       .catch(error => {
         console.error("Server Error", error);
       });
-  };
-  useEffect(() => {
-    getStrains();
-  }, [type]);
-  useEffect(() => {
-    filterList(props.nameToSearch);
-  }, [props.nameToSearch]);
+=======
+  getStrainsList = e => {
+    const token = JSON.parse(localStorage.getItem('token'))
 
-  if (filteredStrains.length > 0) {
+    axiosWithAuth()
+      .get('api/auth/cannabis')
+      .then(res => {
+        console.log(res);
+        this.setState({ strains: res.data })
+      })
+      .catch(error =>
+        console.log(error)
+      )
+>>>>>>> 41a37a5ac9a9ad428eab6dd1f8dab1350d1482ce
+  };
+  render () {
     return (
+      
       <StrainsContainer>
+<<<<<<< HEAD
         <StrainListControl>
           <StrainButton name="indica" onClick={() => setType("Indica")}>
             Indica
@@ -157,6 +184,22 @@ export default function StrainList(props) {
       <h3> Recommended {type} strains listed below:</h3>
       <StrainCardContainer>
         {strains.slice(0, 8).map(strain => {
+=======
+       <StrainListControl>
+         <SButton name="indica" onClick={() => setType("Indica")}>
+           Indica
+         </SButton>
+         <SButton primary name="hybrid" onClick={() => setType("Hybrid")}>
+           Hybrid
+         </SButton>
+         <SButton tertiary name="sativa" onClick={() => setType("Sativa")}>
+           Sativa
+         </SButton>
+       </StrainListControl>
+       <h3> All {type} strains listed below:</h3>
+       <StrainCardContainer>
+       {strains.slice(0, 100).map(strain => {
+>>>>>>> 41a37a5ac9a9ad428eab6dd1f8dab1350d1482ce
           return (
             <StrainCard
               key={strain.id}
@@ -168,5 +211,108 @@ export default function StrainList(props) {
         })}
       </StrainCardContainer>
     </StrainsContainer>
-  );
+    )
+  }
 }
+export default Strains;
+// export default function StrainList(props) {
+//   const [strains, setStrains] = useState([]);
+//   const [type, setType] = useState("Indica");
+//   const [filteredStrains, setFilteredStrains] = useState([]);
+
+//   const filterList = name => {
+//     const filteredList = strains.filter(strain =>
+//       strain.name.toLowerCase().includes(name.toLowerCase())
+//     );
+//     setFilteredStrains(filteredList);
+//   };
+//   const getStrains = () => {
+//     // const token = JSON.parse(localStorage.getItem('token'))
+//     // axios({
+//     //   "method":"POST",
+//     //   "url":"https://med-cabinet-backend.herokuapp.com//api/auth/cannabis/",
+//     //   "headers":{
+//     //   "content-type":"application/x-www-form-urlencoded",
+//     //   "x-rapidapi-host":"StrainraygorodskijV1.p.rapidapi.com",
+//     //   "x-rapidapi-key":"273bc202dbmsh49d80387c5f7502p14618ajsne8e81cda88a7",
+//     //   "useQueryString":true
+//     //   },"data":{
+      
+//     //   }
+//     //   })
+//   getToken();
+//     axiosWithAuth()
+//       .get('/api/auth/cannabis/')
+//       .then((response)=>{
+//         console.log(response.data)
+//       })
+//       .catch((error)=>{
+//         console.log(error)
+//       })
+//   };
+//   useEffect(() => {
+//     getStrains();
+//   }, [type]);
+//   useEffect(() => {
+//     filterList(props.nameToSearch);
+//   }, [props.nameToSearch]);
+
+//   if (filteredStrains.length > 0) {
+//     return (
+//       <StrainsContainer>
+//         <StrainListControl>
+//           <SButton name="indica" onClick={() => setType("Indica")}>
+//             Indica
+//           </SButton>
+//           <SButton primary name="hybrid" onClick={() => setType("Hybrid")}>
+//             Hybrid
+//           </SButton>
+//           <SButton tertiary name="sativa" onClick={() => setType("Sativa")}>
+//             Sativa
+//           </SButton>
+//         </StrainListControl>
+//         <h3>All {type} strains listed below:</h3>
+//         <StrainCardContainer>
+//           {filteredStrains.map(strain => {
+//             return (
+//               <StrainCard
+//                 key={strain.id}
+//                 sName={strain.name}
+//                 race={strain.race}
+//                 id={strain.id}
+//               />
+//             );
+//           })}
+//         </StrainCardContainer>
+//       </StrainsContainer>
+//     );
+//   }
+//   return (
+//     <StrainsContainer>
+//       <StrainListControl>
+//         <SButton name="indica" onClick={() => setType("Indica")}>
+//           Indica
+//         </SButton>
+//         <SButton primary name="hybrid" onClick={() => setType("Hybrid")}>
+//           Hybrid
+//         </SButton>
+//         <SButton tertiary name="sativa" onClick={() => setType("Sativa")}>
+//           Sativa
+//         </SButton>
+//       </StrainListControl>
+//       <h3> All {type} strains listed below:</h3>
+//       <StrainCardContainer>
+//         {strains.slice(0, 100).map(strain => {
+//           return (
+//             <StrainCard
+//               key={strain.id}
+//               sName={strain.name}
+//               race={strain.race}
+//               id={strain.id}
+//             />
+//           );
+//         })}
+//       </StrainCardContainer>
+//     </StrainsContainer>
+//   );
+// }
