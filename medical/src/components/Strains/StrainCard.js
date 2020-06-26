@@ -35,7 +35,7 @@ const StrainCard = props => {
   return (
     <StrainCardTemp>
       <TypeMar>
-        Type: {props.type} 
+        Type: {props.race} 
       </TypeMar>
       
       <img src={marijuana} alt="flower_photo" width="100%" height="100%" />

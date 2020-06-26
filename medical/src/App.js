@@ -1,14 +1,14 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+// import {Route} from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components';
 import Header from './components/Header/header'
-import CTA from './components/CTA'
+// import CTA from './components/CTA'
 import Footer from './components/Footer/Footer'
 // import CreateUser from './components/signup/CreateUser'
 // import Login from './components/login/Login'
 // import Dashboard from './components/Dashboard/Dashboard'
-import Recommendations from './components/Recommendations/RecommendationsList';
+// import Recommendations from './components/Recommendations/RecommendationsList';
 import WelcomePage from "./components/WelcomePage"
 function App() {
 
@@ -50,7 +50,7 @@ function App() {
 
         <Route path="/dashboard">
 
-          <Dashboard />
+          <DashBoard userName="Tom Sawyer"/>
 
         </Route>
 
@@ -61,7 +61,8 @@ function App() {
 
 
         </Route> */}
-     <WelcomePage />
+        
+     <WelcomePage username="Tom Sawyer"/>
 
     <Footer />
 

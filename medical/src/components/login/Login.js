@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { axiosWithAuth, setToken } from "../../utilities";
 import { Link,  useHistory } from "react-router-dom";
 import * as yup from "yup";
@@ -95,12 +95,12 @@ const { push } = useHistory();
          [name]: "",
        });
      })
-     .catch((error) => {
-       setFormErrors({
-         ...formErrors,
-         [name]: error.error[0],
-       });
-     })
+    //  .catch((error) => {
+    //    setFormErrors({
+    //      ...formErrors,
+    //      [name]: error.error[0],
+    //    });
+    //  })
      setFormValues({
        ...formValues,
        [name]: value
