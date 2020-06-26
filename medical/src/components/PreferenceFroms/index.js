@@ -50,17 +50,17 @@ const PreferenceForm = (props) => {
           </StyledTitle>
           <div>
             <StyledPreference>
-              {/* {flavors.map((x, index) => {
+              {/* {flavors.map((x, index) => { */}
                 return (
                   <StyledCheckbox>
                     <Flavor
-                      key={index}
-                      flavor={x}
-                      checked={props.flavors.includes(x) ? true : false}
-                      checkHandler={props.toggleFlavor}
+                      // key={index}
+                      // flavor={x}
+                      // checked={props.flavors.includes(x) ? true : false}
+                      // checkHandler={props.toggleFlavor}
                     />
                   </StyledCheckbox>
-                );
+                {/* );
               })} */}
             </StyledPreference>
           </div>
@@ -73,16 +73,16 @@ const PreferenceForm = (props) => {
             </h3>
           </StyledTitle>
           <StyledPreference>
-            {/* {effects.map((x, index) => (
+            {/* {effects.map((x, index) => ( */}
               <StyledCheckbox>
                 <Effect
-                  key={index}
-                  effect={x}
-                  checked={props.effects.includes(x) ? true : false}
-                  checkHandler={props.toggleEffect}
+                  // key={index}
+                  // effect={x}
+                  // checked={props.effects.includes(x) ? true : false}
+                  // checkHandler={props.toggleEffect}
                 />
               </StyledCheckbox>
-            ))} */}
+            {/* // ))} */}
           </StyledPreference>
         </div>
         <StyledInput>

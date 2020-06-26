@@ -9,9 +9,9 @@ const Effect = (props) => {
                     type="checkbox"
                     name={effect}
                     checked={checked}
-                    onChange={checkHandler}
+        //             onChange={checkHandler}
                 />
-        &nbsp;{effect}
+        // &nbsp;{effect}
             </label>
         </div>
     );
