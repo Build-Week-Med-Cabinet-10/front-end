@@ -11,55 +11,60 @@ import axios from "axios";
 const StrainsContainer = styled.section`
   display: flex;
   flex-direction: column;
-  padding-left: 8vw;
-  padding-top: 16vh;
-  font-size: 1rem;
-  font-family: "Script MT";
-  min-height: 100%;
-  min-width: 80%;
-  max-width: 80%;
+  margin-top: 2rem;
+  align-items: center;
+
+
   p {
     text-align: left;
     font-weight: bold;
-    padding: 0 1%;
+    
   }
 `;
 const StrainListControl = styled.div`
   display: flex;
   justify-content: space-around;
-  font-family: "Script MT";
+  font-family: "Roboto";
+  max-width: 80%;
 `;
+
 const StrainCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  font-family: "Script MT";
+  font-family: "Roboto";
+  width: 100%;
 `;
-const SButton = styled.button`
-  background: forestgreen;
-  min-height: 15vh;
-  min-width: 15vw;
-  border: 1px solid forestgreen;
-  border-radius: 30px 10px 30px;
-  color: white;
-  margin: 0.5em 1em;
-  padding: 0.25em 1em;
-  cursor: pointer;
-  font-family: "Script MT";
-  ${props =>
-    props.primary &&
-    css`
-      background: Purple;
-      border: 1px solid Purple;
-    `}
 
-  ${props =>
-    props.tertiary &&
-    css`
-      background: red;
-      border: 1px solid red;
-    `}
+const StrainButton = styled.button
+`
+background-color: #0DCA71;
+min-width: 12rem;
+height: 4rem;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 2rem;
+
+color: white;
+box-shadow: 6px 6px 0px #555555;
+font-family: roboto;
+
+        &&:hover {
+          background-color: #0bb565;
+          right: calc(2rem - 3px);
+          margin-top: 5px;
+          margin-bottom: -5px;
+          box-shadow: 3px 3px 0px #555555;
+          margin-top: calc(2rem + 6px);
+        
+        }
+
+
+        span {
+          font-size: 1.2rem;
+        }
 `;
 
 
@@ -91,24 +96,54 @@ const Strains = (props) =>  {
     return (
       
       <StrainsContainer>
-       <StrainListControl>
-         {/* <SButton name="indica" onClick={onClick}> */}
-           {/* Indica
-         </SButton> */}
-         <SButton primary name="hybrid" onClick={() => setType("Hybrid")}>
-           Hybrid
-         </SButton>
-         <SButton tertiary name="sativa" onClick={() => setType("Sativa")}>
-           Sativa
-         </SButton>
-       </StrainListControl>
-       <h3> All {type} strains listed below:</h3>
-       <StrainCardContainer>
-       {strains.slice(0, 100).map(strain => {
+        <StrainListControl>
+          <StrainButton name="indica" onClick={() => setType("Indica")}>
+            Indica
+          </StrainButton>
+          <StrainButton name="hybrid" onClick={() => setType("Hybrid")}>
+            Hybrid
+          </StrainButton>
+          <StrainButton name="sativa" onClick={() => setType("Sativa")}>
+            Sativa
+          </StrainButton>
+        </StrainListControl>
+        <h3> Recommended {type} strains listed below:</h3>
+        <StrainCardContainer>
+          {filteredStrains.map(strain => {
+            return (
+              <StrainCard
+                key={strain.id}
+                strainName={strain.name}
+                race={strain.race}
+                id={strain.id}
+              />
+            );
+          })}
+        </StrainCardContainer>
+      </StrainsContainer>
+    );
+  }
+  
+  return (
+    <StrainsContainer>
+      <StrainListControl>
+        <StrainButton name="indica" onClick={() => setType("Indica")}>
+          Indica
+        </StrainButton>
+        <StrainButton primary name="hybrid" onClick={() => setType("Hybrid")}>
+          Hybrid
+        </StrainButton>
+        <StrainButton tertiary name="sativa" onClick={() => setType("Sativa")}>
+          Sativa
+        </StrainButton>
+      </StrainListControl>
+      <h3> Recommended {type} strains listed below:</h3>
+      <StrainCardContainer>
+        {strains.slice(0, 8).map(strain => {
           return (
             <StrainCard
               key={strain.id}
-              sName={strain.name}
+              strainName={strain.name}
               race={strain.race}
               id={strain.id}
             />
@@ -117,6 +152,6 @@ const Strains = (props) =>  {
       </StrainCardContainer>
     </StrainsContainer>
     )
-  }
+      
 
 export default Strains;   

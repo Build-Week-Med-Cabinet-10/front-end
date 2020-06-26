@@ -8,27 +8,24 @@ import { user } from "../../actions"
 
 
 
-function DashBoard() {
+    function DashBoard() {
 
 
-    const DashContain = styled.div
+        const DashContain = styled.div
         `
         display:flex;
         flex-direction: row;
         width: 100%;     
         `
 
-    const DashImg = styled.img
+        const DashImg = styled.img
         `
         display: inline-block;
         max-width: 100%;
         `
 
-
-
-
-    const DashCard = styled.div
-        `
+            const DashCard = styled.div
+            `
             display: flex;
             flex-direction: column;
             width: 100%; 
@@ -36,21 +33,22 @@ function DashBoard() {
             margin: 0rem auto;     
             `
 
-    const DashCardRow = styled.div
-        `
+                const DashCardRow = styled.div
+                `
                 display: flex;
                 flex-direction: row;
                 width: 100%;
+                height: 100%;
                 align-items: space-between;
                 justify-content: space-between;
                 `
 
-    const UserCard = styled.div
-        `
+            const UserCard = styled.div
+            `
             display: flex;
             flex-direction: column;
-            min-height: 300px;
             min-width: 200px;
+
                 span {
                     color: #ffffff;
                     font-weight: 700;
@@ -58,38 +56,65 @@ function DashBoard() {
                     padding: .5rem;
                     text-align: center;
                     background: #0b9444;
-                }
-            
-            
+                }  
             `
 
+            const StrainForms = styled.div
+            `
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #dcdcdc;
+            height: calc(100% - 2rem);
+            width: calc(100% - 4rem);
+            margin: 2rem 4rem;
+            border: 2px solid #555555;
+            padding: 2rem;
+            box-sizing: border-box;
+            `
+
+            const FavoriteStrains = styled.div
+            `
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            padding: 1rem;
+            `
+
+        return (
+            
+
+            <DashContain>
+                
+                <DashCard>
+
+                    <DashCardRow>
+
+                        <UserCard>
+                            <DashImg src={UserImage} />
+                            <span>Hello</span>
+                        </UserCard>
+
+                        <StrainForms>
+
+                          Place code here
+
+                          <FavoriteStrains>
+
+                          </FavoriteStrains>
+
+                        </StrainForms>
+
+                    </DashCardRow>
 
 
+                </DashCard>
 
-    return (
+            </DashContain>
 
+        )
 
-        <DashContain>
-
-            <DashCard>
-
-                <DashCardRow>
-
-                    <UserCard>
-                        <DashImg src={UserImage} />
-
-    <span>userName goes here{user.username  }</span>
-
-                    </UserCard>
-
-                </DashCardRow>
-
-
-            </DashCard>
-
-        </DashContain>
-
-    )
-
-}
-export default DashBoard;
+    }
+    export default DashBoard
