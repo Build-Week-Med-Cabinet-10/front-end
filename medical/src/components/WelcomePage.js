@@ -6,25 +6,11 @@ import Login from "./login/Login";
 import CreateUser from './signup/CreateUser';
 import  Dashboard from "./Dashboard/Dashboard";
 import PreferenceForm from "./PreferenceFroms";
-import {getToken} from  ".././utilities"
-import {axiosWithAuth} from ".././utilities"
+import {getToken} from  "../utilities"
 
     function WelcomePage () {
     const {push} = useHistory();
-    const token = getToken();
-   
-
-   
-
-    
-  
-        axiosWithAuth().post('api/auth/logout/', {
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    })
-    
-        .then(data => console.log(data.data))
+    const token = getToken();    
    
     return (
         <div className = "wrapper">

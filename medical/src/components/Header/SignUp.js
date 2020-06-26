@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import {Route} from 'react-router-dom';
+import {Route, useHistory} from 'react-router-dom';
 import Register from './Register'
-import {axiosWithAuth, getToken} from "../../utilities"
+import {clearToken} from '../../utilities'
+
 
 const SignUpBanner = styled.div
 `
@@ -42,18 +43,17 @@ font-family: roboto;
             text-transform: uppercase;
         }
 `
-
-const token = getToken();
-    const handleLogOut = () => { 
-    //    const token = getToken(); 
-        axiosWithAuth().post('api/auth/logout/', {
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    })
-}
-
 export default function SignUp() {
+
+
+
+    const {push} = useHistory();
+    const handleLogout = () => { 
+    clearToken();
+    push ("/login")
+    }
+
+
 
     return (
 
@@ -68,7 +68,7 @@ export default function SignUp() {
 
             <Route path ="/(dashboard)">
 
-                <button onClick= {() => handleLogOut()}>LOGOUT</button>
+                <button onClick= {() => handleLogout()}>LOGOUT</button>
            
             </Route>
 

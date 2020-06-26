@@ -1,10 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import {getToken, clearToken} from  "../../utilities/";
+import { useHistory } from "react-router-dom";
 
-const handleLogOut = () => { 
-    //    const token = getToken(); 
-}
+
+
+const HandleLogOut = () => { 
+
+  const push = useHistory();
+  
+  clearToken();
+  push ("/login")
+  }
 
 const LogoutDiv = styled.div
 `
@@ -99,8 +107,8 @@ function LogoutPromo() {
 
           
               <SignOutBanner>
-              <Link to="/">
-                    <button onClick= {() => handleLogOut()}>logout</button>
+                  <Link to="/login">
+                      <button onClick= {() => HandleLogOut()}>logout</button>
                     </Link>
               </SignOutBanner>
 
