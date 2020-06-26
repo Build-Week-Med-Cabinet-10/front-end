@@ -10,15 +10,17 @@ export const fetchStrains = () => (dispatch) => {
 
 
 
-    axios
-        .get(
-            "https://med-cabinet-backend.herokuapp.com//api/auth/cannabis" 
-        )
-        .then((res) => {
-            console.log("res-->", res);
-            dispatch({ type: FETCH_STRAINS_SUCCESS, payload: res.data });
-        })
-        .catch((err) => {
-            dispatch({ type: FETCH_STRAINS_FAILURE, payload: err });
-        });
+   const getStrainsList = e => {
+        const token = JSON.parse(localStorage.getItem('token'))
+
+        axiosWithAuth()
+            .get('api/auth/cannabis', token)
+            .then(res => {
+                console.log(res);
+                this.setState({ strains: res.data })
+            })
+            .catch(error =>
+                console.log(error)
+            )
+    };
 };
