@@ -1,0 +1,80 @@
+import React from 'react';
+import styled from 'styled-components';
+import {Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import Register from './Register'
+import {axiosWithAuth, getToken} from "../../utilities"
+
+const SignUpBanner = styled.div
+`
+background-color: #0DCA71;
+min-width: 12rem;
+height: 3rem;
+display: flex;
+justify-content: center;
+padding-top: 3rem;
+margin-right: calc(-2rem);
+color: white;
+box-shadow: 6px 6px 0px #555555;
+font-family: roboto;
+
+        &&:hover {
+          background-color: #0bb565;
+          right: calc(3rem - 3px);
+          margin-top: 5px;
+          box-shadow: 3px 3px 0px #555555;
+        
+        }
+
+
+        span {
+          font-size: 1.2rem;
+        }
+
+        button {
+            width: 100%;
+            margin-top: -1rem;
+            background-color: transparent;
+            border: 0;
+            color: white;
+            font-size: 1.2rem;
+            font-family: roboto;
+            text-transform: uppercase;
+        }
+`
+
+const token = getToken();
+    const handleLogOut = () => { 
+    //    const token = getToken(); 
+        axiosWithAuth().post('api/auth/logout/', {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+}
+
+export default function SignUp() {
+
+    return (
+
+
+        <SignUpBanner>
+
+            <Route path ="/(login|register)">
+                <button onClick Link ="/register">
+                    Signup
+                </button>
+            </Route>
+
+            <Route path ="/(dashboard)">
+
+                <button onClick= {() => handleLogOut()}>LOGOUT</button>
+           
+            </Route>
+
+        </SignUpBanner>
+    )
+
+
+
+}

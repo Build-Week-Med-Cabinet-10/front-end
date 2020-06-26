@@ -77,7 +77,7 @@ export default function StrainList(props) {
       strain.name.toLowerCase().includes(name.toLowerCase())
     );
     setFilteredStrains(filteredList);
-  };
+  }; 
 
   // const api = 'https://med-cabinet-backend.herokuapp.com'; 
   // const token = getToken(); /*take only token and save in token variable*/

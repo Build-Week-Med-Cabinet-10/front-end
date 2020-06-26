@@ -9,14 +9,13 @@ import PreferenceForm from "./PreferenceFroms";
 import {getToken} from  ".././utilities"
 import {axiosWithAuth} from ".././utilities"
 
-export default function WelcomePage () {
+    function WelcomePage () {
     const {push} = useHistory();
     const token = getToken();
    
 
    
-    const handleLogOut = () => { 
-    //    const token = getToken(); 
+
     
   
         axiosWithAuth().post('api/auth/logout/', {
@@ -26,7 +25,7 @@ export default function WelcomePage () {
     })
     
         .then(data => console.log(data.data))
-    }
+   
     return (
         <div className = "wrapper">
             <Switch>
@@ -45,7 +44,8 @@ export default function WelcomePage () {
        
                 {/* <PrivateRoute path="/dashboard/preferences" component={PreferenceForm} /> */}
             </Switch>
-             <button onClick= {() => handleLogOut()}>logout</button>
+      
         </div>
     );
 }
+    export default WelcomePage
