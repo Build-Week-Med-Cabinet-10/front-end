@@ -13,7 +13,7 @@ export const setPrefs = (req) => (dispatch) => {
   // Here, we update data in database
   return axios
     .post(
-      "/api/auth/cannabis",
+      "/predict",
       prefs
     )
     .then((res) => {

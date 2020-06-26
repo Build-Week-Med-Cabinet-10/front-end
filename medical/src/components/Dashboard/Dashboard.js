@@ -1,9 +1,10 @@
 import React from 'react';
-// import { axiosWithAuth } from "../utilities/axiosWithAuth";
-import { useHistory } from "react-router-dom"
+// import { axiosWithAuth } from "../../utilities/axiosWithAuth";
+// import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
-import { Button } from 'reactstrap';
-import UserImage from '../../components/assets/user-placeholder.jpg'
+// import { Button } from 'reactstrap';
+import UserImage from '../assets/user-placeholder.jpg';
+import { user } from "../../actions"
 
 
 

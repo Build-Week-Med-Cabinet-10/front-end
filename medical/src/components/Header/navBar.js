@@ -33,9 +33,10 @@ function NavBar() {
         
             <NavContain>
 
-<Link to="dashboard/strains" id="strainsLink">Strains</Link>
+<Link to="/dashboard/strains" id="strainsLink">Strains</Link>
 <Link to="/Providers" id="mmjDoctorsLink">MMJ Doctors</Link>
 <Link to="/Stores" id="storesLink">Stores</Link>
+<Link to = "/dashboard/preferences" id="prefsLink">Preferences</Link>
                 
                 
 

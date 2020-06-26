@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import {axiosWithAuth, setToken} from "../../utilities/";
+import {axiosWithAuth} from "../../utilities/axiosWithAuth";
 import StrainCard from "./StrainCard";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { strains } from "../../actions"
 import { getToken } from "../../utilities"
+import axios from "axios";
+
+
+
 const StrainsContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -64,54 +68,33 @@ font-family: roboto;
 `;
 
 
-
-export default function StrainList(props) {
+const Strains = (props) =>  {
+  // state = { strains: [],
+ 
+  // }
   const [strains, setStrains] = useState([]);
   const [type, setType] = useState("Indica");
   const [filteredStrains, setFilteredStrains] = useState([]);
 
-  const filterList = name => {
-    const filteredList = strains.filter(strain =>
-      strain.name.toLowerCase().includes(name.toLowerCase())
-    );
-    setFilteredStrains(filteredList);
-  };
+ 
+  const token = getToken();
 
-  // const api = 'https://med-cabinet-backend.herokuapp.com'; 
-  // const token = getToken(); /*take only token and save in token variable*/
-  // axios.get(`https://med-cabinet-backend.herokuapp.com=&:${token}`)
-  // .then(res => {
-  // console.log(res);
-  // // .catch((error) => {
-  // //   console.log(error)
-  // });
+  axiosWithAuth().get('/api/cannabis/',  {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  })
+.then(data=> console.log(data.data))
+
+    
+
+   
 
 
-  const getStrains = (props) => {
-  
-    axiosWithAuth()
-    axios
-    .get("https://med-cabinet-backend.herokuapp.com/api/auth/cannabis")
-
-      .then(response => {
-        setStrains(response.data);
-        setFilteredStrains(strains);
-        console.log(response.data)
-      })
-
-      .catch(error => {
-        console.error("Server Error", error);
-      });
-  };
-  useEffect(() => {
-    getStrains();
-  }, [type]);
-  useEffect(() => {
-    filterList(props.nameToSearch);
-  }, [props.nameToSearch]);
-
-  if (filteredStrains.length > 0) {
+   
+ 
     return (
+      
       <StrainsContainer>
         <StrainListControl>
           <StrainButton name="indica" onClick={() => setType("Indica")}>
@@ -168,5 +151,7 @@ export default function StrainList(props) {
         })}
       </StrainCardContainer>
     </StrainsContainer>
-  );
-}
+    )
+      
+
+export default Strains;   
