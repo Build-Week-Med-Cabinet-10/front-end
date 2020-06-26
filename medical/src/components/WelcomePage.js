@@ -1,15 +1,11 @@
 import React from "react";
 import {Route, Redirect, Switch } from "react-router-dom";
 import PrivateRoute from "./privateRoute/index";
-import Strains from './Strains/Strains';
+import Strains from './Strains/strains';
 import Login from "./login/Login";
 import CreateUser from './signup/CreateUser';
-<<<<<<< HEAD
-import Dashboard from "./Dashboard/Dashboard";
-=======
 import  Dashboard from "./Dashboard/Dashboard";
 import PreferenceForm from "./PreferenceFroms"
->>>>>>> 41a37a5ac9a9ad428eab6dd1f8dab1350d1482ce
 
 export default function WelcomePage () {
     return (
