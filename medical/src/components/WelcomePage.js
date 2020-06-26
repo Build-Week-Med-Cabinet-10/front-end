@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Route, Redirect, Switch, useHistory } from "react-router-dom";
 
 import PrivateRoute from "./privateRoute/index";
@@ -7,26 +7,21 @@ import Login from "./login/Login";
 import CreateUser from './signup/CreateUser';
 import  Dashboard from "./Dashboard/Dashboard";
 import PreferenceForm from "./PreferenceFroms";
-import {getToken} from  ".././utilities"
+import {getToken, clearToken} from  ".././utilities"
 import {axiosWithAuth} from ".././utilities"
 
 export default function WelcomePage () {
-    const {push} = useHistory();
-    const token = getToken();
+    
+   
    
 
-   
+    const token = getToken();
+    const {push} = useHistory();
     const handleLogOut = () => { 
-    //    const token = getToken(); 
-    
-  
-        axiosWithAuth().post('api/auth/logout/', {
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    })
-    
-        .then(data => console.log(data.data))
+ 
+    clearToken();
+    push ("/login")
+
     }
     return (
         <div className = "wrapper">
