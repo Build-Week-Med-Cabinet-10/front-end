@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components'
 import fonts from '../../fonts.css'
-
+import {Route} from 'react-router-dom'
 import Locator from './locator'
 import LoginPromo from './loginPromo'
+import LogoutPromo from './logoutPromo'
 import MainBar from './mainBar'
 
 
@@ -59,8 +60,8 @@ function Header() {
                 <PromoBarInner> 
 
                     <Locator />
-                    
-                    <LoginPromo />
+
+                         <LoginPromo />
                     
                 </PromoBarInner>
 

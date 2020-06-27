@@ -6,8 +6,6 @@ import { strains } from "../../actions"
 import { getToken } from "../../utilities"
 import axios from "axios";
 
-
-
 const StrainsContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -68,10 +66,8 @@ font-family: roboto;
 `;
 
 
-const Strains = (props) =>  {
-  // state = { strains: [],
- 
-  // }
+
+export default function StrainList(props) {
   const [strains, setStrains] = useState([]);
   const [type, setType] = useState("Indica");
   const [filteredStrains, setFilteredStrains] = useState([]);
@@ -93,8 +89,47 @@ const Strains = (props) =>  {
 
    
  
+  const filterList = name => {
+    const filteredList = strains.filter(strain =>
+      strain.name.toLowerCase().includes(name.toLowerCase())
+    );
+    setFilteredStrains(filteredList);
+  }; 
+
+  // const api = 'https://med-cabinet-backend.herokuapp.com'; 
+  // const token = getToken(); /*take only token and save in token variable*/
+  // axios.get(`https://med-cabinet-backend.herokuapp.com=&:${token}`)
+  // .then(res => {
+  // console.log(res);
+  // // .catch((error) => {
+  // //   console.log(error)
+  // });
+
+    const getStrains = () => {
+      axios
+  
+        .get(
+          `https://strainapi.evanbusse.com/VUGyzwt/strains/search/race/${type}`
+        )
+  
+        .then(response => {
+          setStrains(response.data);
+          setFilteredStrains(strains);
+        })
+  
+        .catch(error => {
+          console.error("Server Error", error);
+        });
+    };
+    useEffect(() => {
+      getStrains();
+    }, [type]);
+    useEffect(() => {
+      filterList(props.nameToSearch);
+    }, [props.nameToSearch]);
+
+  if (filteredStrains.length > 0) {
     return (
-      
       <StrainsContainer>
         <StrainListControl>
           <StrainButton name="indica" onClick={() => setType("Indica")}>
@@ -151,7 +186,5 @@ const Strains = (props) =>  {
         })}
       </StrainCardContainer>
     </StrainsContainer>
-    )
-      
-
-export default Strains;   
+  );
+}
