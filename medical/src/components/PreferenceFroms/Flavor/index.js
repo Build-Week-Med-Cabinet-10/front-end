@@ -9,9 +9,9 @@ const Flavor = (props) => {
                     type="checkbox"
                     name={flavor}
                     checked={checked}
-        //             onChange={checkHandler}
+                    onChange={checkHandler}
                 />
-        {/* &nbsp;{flavor} */}
+        &nbsp;{flavor}
             </label>
         </div>
     );

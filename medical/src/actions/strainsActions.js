@@ -8,19 +8,18 @@ export const FETCH_STRAINS_FAILURE = "FETCH_STRAINS_FAILURE";
 export const fetchStrains = () => (dispatch) => {
     dispatch({ type: FETCH_STRAINS_START });
 
-
-
-   const getStrainsList = e => {
-        const token = JSON.parse(localStorage.getItem('token'))
-
-        axiosWithAuth()
-            .get('api/auth/cannabis', token)
-            .then(res => {
-                console.log(res);
-                this.setState({ strains: res.data })
-            })
-            .catch(error =>
-                console.log(error)
-            )
-    };
+    const token = getToken();
+    axiosWithAuth()
+        .get('/api/cannabis/',  {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then((res) => {
+            console.log("res-->", res);
+            dispatch({ type: FETCH_STRAINS_SUCCESS, payload: res.data });
+        })
+        .catch((err) => {
+            dispatch({ type: FETCH_STRAINS_FAILURE, payload: err });
+        });
 };

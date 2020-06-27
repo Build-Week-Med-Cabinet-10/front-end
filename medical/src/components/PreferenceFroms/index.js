@@ -1,14 +1,20 @@
-import React from "react";
+import React , { useState} from "react";
 import { connect } from "react-redux";
 import { signup } from "../../actions";
 import styled from "styled-components";
 import Location from "./Location";
 import Flavor from "./Flavor";
 import Effect from "./Effect";
-
-
+import { flavors, effects } from "../../data";
+import {axiosWithAuth} from "../../utilities"
 import { useHistory } from "react-router-dom";
+import axios from "axios"
 
+
+const initialValues = {
+  flavors: [],
+  effects: [],
+};
 const PreferenceForm = (props) => {
   const { push } = useHistory();
   const submitHandler = (e) => {
@@ -17,13 +23,47 @@ const PreferenceForm = (props) => {
       id: props.id,
       prefs: { Flavors: props.flavors, Effects: props.effects },
     };
+    axios
+      .get("https://medcabinet10.herokuapp.com/predict", req)
+  }
+  // const [formValues, setFormValues] = useState(initialValues);
+// const handleChange = (e) => {
+//   const name = e.target.name;
+//   const value = e.target.value;
+//   setFormValues({
+//     ...formValues,
+//     [name]: "",
+//   });
+// }
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const prefData = {
+  //     flavors: formValues.flavors,
+  //     effects: formValues.effects,
+  //   };
+  //   axios
+  //     .("https://medcabinet10.herokuapp.com/predict", prefData)
+  //     .then((res) => {
+  //       // setToken(res.data.token);
+  //       // props.setUser(res.data.username);
+  //       console.log(res.data)
+        
+      // })
+      // .catch((err) => {
+      //   setFormErrors({
+      //     ...formErrors,
+      //     name: "Login failed"
+      //   });
+      // });
+  // };
+    /**
+     * FIGURE OUT HOW HE WANTS THE DATA STRUCTURED FOR THE POST
+     */
   
-    props.setPrefs(req);
-    push("/recommended");
-  };
   return (
     <div>
-    
+     
       <StyledTitle>
         <h2>Preferences</h2>
       </StyledTitle>
@@ -50,18 +90,19 @@ const PreferenceForm = (props) => {
           </StyledTitle>
           <div>
             <StyledPreference>
-              {/* {flavors.map((x, index) => { */}
+              {flavors.map((x, index) => {
                 return (
                   <StyledCheckbox>
                     <Flavor
-                      // key={index}
-                      // flavor={x}
-                      // checked={props.flavors.includes(x) ? true : false}
-                      // checkHandler={props.toggleFlavor}
+                      key={index}
+                      flavor={x}
+                      name="flavors"
+                      checked={props.flavors.includes(x) ? true : false}
+                      checkHandler={props.toggleFlavor}
                     />
                   </StyledCheckbox>
-                {/* );
-              })} */}
+                );
+              })}
             </StyledPreference>
           </div>
         </div>
@@ -73,16 +114,16 @@ const PreferenceForm = (props) => {
             </h3>
           </StyledTitle>
           <StyledPreference>
-            {/* {effects.map((x, index) => ( */}
+            {effects.map((x, index) => (
               <StyledCheckbox>
                 <Effect
-                  // key={index}
-                  // effect={x}
-                  // checked={props.effects.includes(x) ? true : false}
-                  // checkHandler={props.toggleEffect}
+                  key={index}
+                  effect={x}
+                  checked={props.effects.includes(x) ? true : false}
+                  checkHandler={props.toggleEffect}
                 />
               </StyledCheckbox>
-            {/* // ))} */}
+            ))}
           </StyledPreference>
         </div>
         <StyledInput>

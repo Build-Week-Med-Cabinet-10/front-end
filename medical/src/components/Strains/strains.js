@@ -72,6 +72,23 @@ export default function StrainList(props) {
   const [type, setType] = useState("Indica");
   const [filteredStrains, setFilteredStrains] = useState([]);
 
+ 
+  const token = getToken();
+
+  axiosWithAuth().get('/api/cannabis/',  {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  })
+.then(data=> console.log(data.data))
+
+    
+
+   
+
+
+   
+ 
   const filterList = name => {
     const filteredList = strains.filter(strain =>
       strain.name.toLowerCase().includes(name.toLowerCase())
