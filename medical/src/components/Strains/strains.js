@@ -114,7 +114,7 @@ export default function StrainList(props) {
   
         .then(response => {
           setStrains(response.data);
-          setFilteredStrains(strains);
+          setFilteredStrains(strains.slice(300,312));
         })
   
         .catch(error => {
@@ -174,7 +174,7 @@ export default function StrainList(props) {
       </StrainListControl>
       <h3> Recommended {type} strains listed below:</h3>
       <StrainCardContainer>
-        {strains.slice(0, 8).map(strain => {
+        {strains.slice(300,312).map(strain => {
           return (
             <StrainCard
               key={strain.id}
