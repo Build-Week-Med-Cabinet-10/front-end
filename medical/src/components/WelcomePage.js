@@ -1,28 +1,17 @@
-import React, {useState} from "react";
-import {Route, Redirect, Switch, useHistory } from "react-router-dom";
-
+import React from "react";
 import PrivateRoute from "./privateRoute/index";
-import Strains from "./Strains/Strains";
+import Strains from './Strains/strains';
+import {Route, Redirect, Switch, useHistory } from "react-router-dom";
 import Login from "./login/Login";
 import CreateUser from './signup/CreateUser';
 import  Dashboard from "./Dashboard/Dashboard";
 import PreferenceForm from "./PreferenceFroms";
-import {getToken, clearToken} from  ".././utilities"
-import {axiosWithAuth} from ".././utilities"
+import {getToken} from  "../utilities"
 
-export default function WelcomePage () {
-    
-   
-   
-
-    const token = getToken();
+    function WelcomePage () {
     const {push} = useHistory();
-    const handleLogOut = () => { 
- 
-    clearToken();
-    push ("/login")
-
-    }
+    const token = getToken();    
+   
     return (
         <div className = "wrapper">
             <Switch>
@@ -41,7 +30,8 @@ export default function WelcomePage () {
        
                 {/* <PrivateRoute path="/dashboard/preferences" component={PreferenceForm} /> */}
             </Switch>
-             <button onClick= {() => handleLogOut()}>logout</button>
+      
         </div>
     );
 }
+    export default WelcomePage
