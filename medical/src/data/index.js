@@ -1,4 +1,4 @@
-import { effects, flavors,  } from "./data";
+import { effects, flavors, dummyStrains  } from "./data";
 
 
 export { effects, flavors,};

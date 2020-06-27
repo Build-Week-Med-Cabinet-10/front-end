@@ -6,14 +6,12 @@ export const SET_PREFS_START = "SET_PREFS_START";
 export const SET_PREFS_SUCCESS = "SET_PREFS_SUCCESS";
 export const SET_PREFS_FAILURE = "SET_PREFS_FAILURE";
 export const setPrefs = (req) => (dispatch) => {
-  const { id, prefs } = req;
+  const {  prefs } = req;
   dispatch({ type: SET_PREFS_START });
   
 
   // Here, we update data in database
-  return axios
-    .post(
-      "/predict",
+  return axiosWithAuth().post("api/cannabis/",
       prefs
     )
     .then((res) => {
@@ -21,7 +19,7 @@ export const setPrefs = (req) => (dispatch) => {
       const req = { recommendations: name.join(", ") };
 
       axiosWithAuth()
-        .put(`/api/user/${id}`, req)
+        .put(`/api/cannabis/`, req)
         .then((res) => {
           console.log(res);
           dispatch({ type: SET_PREFS_SUCCESS, payload: req.recommendations });

@@ -74,14 +74,10 @@ export default function StrainList(props) {
 
  
   const token = getToken();
-
-  axiosWithAuth().get('/api/cannabis/',  {
-    headers: {
-      "Authorization": `Bearer ${token}`
-    }
-  })
-.then(data=> console.log(data.data))
-
+useEffect ( () =>{
+  axiosWithAuth().get('/api/cannabis/')
+.then(data=> console.log("Preferrenced data",data.data))
+}, []);
     
 
    
@@ -96,22 +92,17 @@ export default function StrainList(props) {
     setFilteredStrains(filteredList);
   }; 
 
-  // const api = 'https://med-cabinet-backend.herokuapp.com'; 
-  // const token = getToken(); /*take only token and save in token variable*/
-  // axios.get(`https://med-cabinet-backend.herokuapp.com=&:${token}`)
-  // .then(res => {
-  // console.log(res);
-  // // .catch((error) => {
-  // //   console.log(error)
-  // });
 
     const getStrains = () => {
+
+       
+    
       axios
   
         .get(
           `https://strainapi.evanbusse.com/VUGyzwt/strains/search/race/${type}`
         )
-  
+   
         .then(response => {
           setStrains(response.data);
           setFilteredStrains(strains.slice(300,312));
@@ -119,7 +110,8 @@ export default function StrainList(props) {
   
         .catch(error => {
           console.error("Server Error", error);
-        });
+        }); 
+     
     };
     useEffect(() => {
       getStrains();
