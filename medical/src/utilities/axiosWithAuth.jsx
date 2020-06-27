@@ -9,7 +9,7 @@ export const axiosWithAuth = () => {
 
         headers: {
             "Content-Type": "application/json",
-            Authorization: token,
+            "Authorization": `Bearer ${token}`,
         },
         baseURL: "https://med-cabinet-backend.herokuapp.com",
     });

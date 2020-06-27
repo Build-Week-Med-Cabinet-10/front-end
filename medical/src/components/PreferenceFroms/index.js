@@ -11,55 +11,29 @@ import { useHistory } from "react-router-dom";
 import axios from "axios"
 
 
-const initialValues = {
-  flavors: [],
-  effects: [],
-};
+
+
 const PreferenceForm = (props) => {
+   const state = {
+  flavors: "Apple",
+  effects: "Relaxed",
+};
   const { push } = useHistory();
   const submitHandler = (e) => {
-    e.preventDefault();
-    const req = {
-      id: props.id,
-      prefs: { Flavors: props.flavors, Effects: props.effects },
-    };
-    axios
-      .get("https://medcabinet10.herokuapp.com/predict", req)
-  }
-  // const [formValues, setFormValues] = useState(initialValues);
-// const handleChange = (e) => {
-//   const name = e.target.name;
-//   const value = e.target.value;
-//   setFormValues({
-//     ...formValues,
-//     [name]: "",
-//   });
-// }
+     e.preventDefault();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const prefData = {
-  //     flavors: formValues.flavors,
-  //     effects: formValues.effects,
-  //   };
-  //   axios
-  //     .("https://medcabinet10.herokuapp.com/predict", prefData)
-  //     .then((res) => {
-  //       // setToken(res.data.token);
-  //       // props.setUser(res.data.username);
-  //       console.log(res.data)
-        
-      // })
-      // .catch((err) => {
-      //   setFormErrors({
-      //     ...formErrors,
-      //     name: "Login failed"
-      //   });
-      // });
-  // };
-    /**
-     * FIGURE OUT HOW HE WANTS THE DATA STRUCTURED FOR THE POST
-     */
+    // const flavor = Apple;
+    //    const effect = Relaxed;
+   axios.get(`https://medcabinet10.herokuapp.com/predict?effect=Relaxed&flavor=Apple`)
+   .then((res) => {
+     console.log("predicted data",  res.payload)
+   }
+    
+   )
+  }
+  // id: props.id,
+      // prefs: { flavors: props.flavors, effects: props.effects },
+      // effect: "Relaxed",
   
   return (
     <div>
