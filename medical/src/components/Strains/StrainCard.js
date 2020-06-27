@@ -19,6 +19,8 @@ const StrainCardTemp = styled.div`
 
 `;
 
+
+
 const TypeMar = styled.div`
 
   background-color: #0bb565;
@@ -40,6 +42,8 @@ const StrainCard = props => {
       
       <img src={marijuana} alt="flower_photo" width="100%" height="100%" />
       <p> {props.strainName} </p>
+
+      
     </StrainCardTemp>
   );
 };

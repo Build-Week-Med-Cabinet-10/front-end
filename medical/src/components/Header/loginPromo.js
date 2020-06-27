@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import Register from './Register'
+import SignUp from './SignUp'
+import {matchPath} from "react-router";
+
+
 
 
 
@@ -8,6 +14,7 @@ const LoginDiv = styled.div
 `
 display: flex;
 flex-direction: row;
+justify-content: flex-end;
 min-width: 16rem;
 font-family: 'Roboto', sans-serif;
 max-width: 20%;
@@ -46,6 +53,7 @@ const LoginPrompt = styled.div
 display: flex;
 height: 2rem;
 align-items: center;
+justify-content: flex-end;
 min-width: 6rem;
 
 
@@ -58,32 +66,7 @@ min-width: 6rem;
 
 `
 
-const SignUpBanner = styled.div
-`
-background-color: #0DCA71;
-min-width: 12rem;
-height: 3rem;
-display: flex;
-justify-content: center;
-padding-top: 2rem;
-margin-right: calc(-6rem + 6px);
-color: white;
-box-shadow: 6px 6px 0px #555555;
-font-family: roboto;
 
-        &&:hover {
-          background-color: #0bb565;
-          right: calc(2rem - 3px);
-          margin-top: 5px;
-          box-shadow: 3px 3px 0px #555555;
-        
-        }
-
-
-        span {
-          font-size: 1.2rem;
-        }
-`
 
 function LoginPromo() {
 
@@ -105,11 +88,12 @@ function LoginPromo() {
    <LoginDiv>
 
      <LoginPrompt>
-       
-       <Link to="/login">
-         <LoginSpan>Login</LoginSpan>
-          
-        </Link>
+
+        <Route path ="/(login|register)" component={Register} />
+
+        <SignUp />
+
+  
 
      </LoginPrompt>
 
@@ -117,9 +101,9 @@ function LoginPromo() {
         <LoginContain>
 
             <Link to="/register">
-              <SignUpBanner>
-                <span>Sign UP</span>
-              </SignUpBanner>
+
+             
+
             </Link>
 
         </LoginContain>

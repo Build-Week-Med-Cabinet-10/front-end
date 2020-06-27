@@ -67,6 +67,30 @@ font-size: 1.5rem;
         }
 `;
 
+const StrainMaster = styled.div 
+`
+display: flex;
+flex-wrap: wrap;
+widt: 25%;
+flex-direction: column;
+`
+
+const DeleteButton = styled.button 
+`
+
+
+margin: 0 auto;
+padding: .5rem;
+border: 0;
+color: white;
+font-weight: 700;
+text-transform: uppercase;
+background: grey;
+border-top: 1px solid black;
+
+
+`
+
 export default function FavoritesList() {
   const [strains, setStrains] = useState([]);
   const [race, setRace] = useState("Indica");
@@ -76,7 +100,7 @@ export default function FavoritesList() {
         axios
 
         .get(
-          `https://straingitapi.evanbusse.com/kvNFH0z/strains/search/race/${race}`
+          `https://strainapi.evanbusse.com/VUGyzwt/strains/search/race/${race}`
           
         )
 
@@ -100,15 +124,29 @@ export default function FavoritesList() {
       <StrainCardContainer>
         {strains.slice(200, 204).map(i => {
           return (
+            <>
+
+    
+
             <StrainCard
               key={i.id}
               strainName={i.name}
               type={i.race}
               id={i.id}
-            />
+            >
+            </StrainCard>
+
+            <DeleteButton>X</DeleteButton>
+            
+           
+
+         
+
+            </>
           );
         })
         }
+
 
       </StrainCardContainer>
     </StrainContainer>

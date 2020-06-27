@@ -4,7 +4,8 @@ import React from 'react';
 import styled from 'styled-components';
 // import { Button } from 'reactstrap';
 import UserImage from '../assets/user-placeholder.jpg';
-import { user } from "../../actions"
+import { user } from "../../actions";
+import Favorites from '../Favorites/Favorites'
 
 
 
@@ -94,12 +95,12 @@ import { user } from "../../actions"
 
                         <UserCard>
                             <DashImg src={UserImage} />
-                            <span>Hello</span>
+                            <span>Hello User</span>
                         </UserCard>
 
                         <StrainForms>
 
-                          Place code here
+                          <Favorites/>
 
                           <FavoriteStrains>
 
@@ -108,7 +109,6 @@ import { user } from "../../actions"
                         </StrainForms>
 
                     </DashCardRow>
-
 
                 </DashCard>
 
